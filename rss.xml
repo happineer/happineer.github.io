@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Happineer Blog]]></title><description><![CDATA[IT Blog about python, web service]]></description><link>http://happineer.github.io</link><image><url>http://happineer.github.io/public/img/favorite.png</url><title>Happineer Blog</title><link>http://happineer.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Fri, 14 Aug 2015 13:19:45 GMT</lastBuildDate><atom:link href="http://happineer.github.io/rss.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[첫글]]></title><description><![CDATA[<img src="http://www.gravatar.com/avatar/414301e05b73b8750dabe51d64e7d3c7?r=pg&s=48.jpg&d=identicon"><br/><h2 id="toc_13">first article</h2>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Happineer Blog]]></title><description><![CDATA[IT Blog about python, web service]]></description><link>http://happineer.github.io</link><image><url>http://happineer.github.io/public/img/favorite.png</url><title>Happineer Blog</title><link>http://happineer.github.io</link></image><generator>RSS for Node</generator><lastBuildDate>Fri, 14 Aug 2015 15:26:58 GMT</lastBuildDate><atom:link href="http://happineer.github.io/rss.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[블로그를 시작하게 된 계기]]></title><description><![CDATA[<img src="http://www.gravatar.com/avatar/414301e05b73b8750dabe51d64e7d3c7?r=pg&s=48.jpg&d=identicon"><br/><h4 id="toc_21">열정가득했던 신입사원</h4>
+<p>누구나 그렇겠지만, 나 역시 신입사원때에는 열정이 가득했다.
+&#39;꿈&#39;은 없었던 것 같다. 뭐가 되고 싶다라든지, 이루고 싶은 것은 명확하지 않았지만
+이 곳에서 누구보다 열심히 일하고, 실력 쌓아서 인정받고 싶은 소망은 있었다.</p>
+<h4 id="toc_22">5년차</h4>
+<p>지금은 아닌 것 같다.
+하루하루 그냥저냥 적절한 선에서 살아가는 것 같다.
+꿈은 애시당초 없었으니 말할 것도 없지만, 어느 순간부터 열정이 식어버린 것은 정말 안타깝다.</p>
+<h4 id="toc_23">재도약</h4>
+<p>다시 예전으로 돌아갈 순 없지만, 처음 입사했을때의 마음가짐으로 인생의 전환점을 준비하고 싶다.
+지금처럼 <strong>살아있는 시체</strong>가 되진 않다는 생각이 나를 지배하고 있다.</p>
+<h4 id="toc_24">결정적 계기</h4>
+<p>요즘 회사가 너무 힘들다.
+동기 또는 몇다리 건너 아는 지인의 퇴사 소식이 계속 들려온다.
+내 얘기가 아닌 것 마냥 넉 놓고 지켜보기만 할 순 없는 상황이다.</p>
+<h4 id="toc_25">지금의 나?</h4>
+<p>회사를 떠난다고 상상하면서 나 스스로에 아래 질문을 던져봤다.</p>
+<ul>
+<li>내가 <strong>잘</strong> 할수 있는 일은 무엇일까?</li>
+<li>나는 어떤 평가를 받을까?</li>
+<li>나의 가치는 어느정도 일까?</li>
+</ul>
+]]></description><link>http://happineer.github.io/post/블로그를-시작하게-된-계기</link><guid isPermaLink="false">블로그를-시작하게-된-계기</guid><dc:creator><![CDATA[<a href="" target="_blank">Happineer</a>]]></dc:creator><pubDate>Fri, 14 Aug 2015 14:20:00 GMT</pubDate></item><item><title><![CDATA[첫글]]></title><description><![CDATA[<img src="http://www.gravatar.com/avatar/414301e05b73b8750dabe51d64e7d3c7?r=pg&s=48.jpg&d=identicon"><br/><h2 id="toc_27">first article</h2>
 <p>code test</p><pre><code class="python"><span class="function"><span class="title">print</span><span class="params">(<span class="string">"Hello world"</span>)</span>
 </span></code></pre>]]></description><link>http://happineer.github.io/post/첫글</link><guid isPermaLink="false">첫글</guid><dc:creator><![CDATA[<a href="" target="_blank">Happineer</a>]]></dc:creator><pubDate>Fri, 14 Aug 2015 13:03:00 GMT</pubDate></item><item><title><![CDATA[Welcome to haroopress]]></title><description><![CDATA[<img src="http://www.gravatar.com/avatar/a8618a255192bd842fdd62d099776735?r=pg&s=48.jpg&d=identicon"><br/><h3 id="toc_7">환영합니다.</h3>
 
