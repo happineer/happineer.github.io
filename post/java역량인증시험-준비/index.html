@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>블로그를 시작하게 된 계기 |  Happineer Blog</title>
+    <title>Java역량인증시험 준비 |  Happineer Blog</title>
     <meta name="description" content="IT Blog about python, web service">
     <meta name="author" content="Happineer">
     <meta name="keywords" content="python,webservice" />
@@ -72,7 +72,7 @@
     </div>
 
     
-<link href="/css/code/default.css" rel="stylesheet">
+<link href="/css/code/tomorrow-night-bright.css" rel="stylesheet">
 <div class="container page-archive">
     <div class="row">
         <div class="span3">
@@ -104,7 +104,7 @@
                     <h3>About this Article</h3>
                     <p>
                         <h5>Date Released:</h5>
-                        <span>Friday, August 14 2015 7:20 AM</span>
+                        <span>Sunday, August 16 2015 7:02 AM</span>
                     </p>
                 </div>
             </div>
@@ -160,9 +160,9 @@
             <div class="row">
                 <div class="span9">
                     <div class="well bg">
-                        <div class="pull-right bookmark"></div>
+                        
                         <div class="page-header">
-                            <h1>블로그를 시작하게 된 계기</h1>
+                            <h1>Java역량인증시험 준비</h1>
                         </div>
 
                         <div class="pull-right social-area">
@@ -173,76 +173,60 @@
                         </div>
 
                         <div class="markdown-wrapper">
-                            <h3 id="toc_24">열정가득했던 신입사원</h3>
-<p>누구나 그렇겠지만, 나 역시 신입사원때에는 열정이 가득했다.
-&#39;꿈&#39;은 없었던 것 같다. 뭐가 되고 싶다라든지, 이루고 싶은 것은 명확하지 않았지만
-이 곳에서 누구보다 열심히 일하고, 실력 쌓아서 인정받고 싶은 소망은 있었다.</p>
-<h3 id="toc_25">5년차</h3>
-<p>지금은 아닌 것 같다.
-하루하루 그냥저냥 적절한 선에서 살아가는 것 같다.
-꿈은 애시당초 없었으니 말할 것도 없지만, 어느 순간부터 열정이 식어버린 것은 정말 안타깝다.</p>
-<h3 id="toc_26">재도약</h3>
-<p>다시 예전으로 돌아갈 순 없지만, 처음 입사했을때의 마음가짐으로 인생의 전환점을 맞이하고 싶다.
-지금처럼 <strong>살아있는 시체</strong>가 되지 말자는 생각이 나를 지배하고 있다.</p>
-<h3 id="toc_27">결정적 계기</h3>
-<p>요즘 회사가 너무 힘들다.
-동기 또는 몇다리 건너 아는 지인의 퇴사 소식이 계속 들려온다.
-내 얘기가 아닌 것 마냥 넉 놓고 지켜보기만 할 순 없는 상황이다.</p>
-<h3 id="toc_28">지금의 나?</h3>
-<p>회사를 떠났다고 상상하면서 스스로에게 아래의 질문을 던져봤다.</p>
+                            <h1 id="toc_0">java 코딩연습</h1>
+<p>주력으로 사용하는 언어가 아니다보니 뭔가를 코딩하려고 할 때 매번 구글링 해야해서 속도가 굉장히 늦다.<br>
+실전에서 자주 등장하는 (등장 할 것으로 예상되는) 것들을 적어놓고 reference없이 코딩 할 수 있도록 연습하자.<br>
+<em class="label label-info"><strong>새로운 문제가 생각나면 계속 업데이트 하자</strong></em>  </p>
+<h2 id="toc_1">String 관련</h2>
+<p><em class="label label-info"><strong>비교, 검색, 치환, index, 추가, 삭제, loop, shift 하는 방법 익히기</strong></em>  </p>
 <ul>
-<li>내가 <strong>잘</strong> 할수 있는 일은 무엇일까?</li>
-<li>나는 어떤 평가를 받을까?</li>
-<li>나의 가치는 어느정도 일까?</li>
-</ul>
-<p>더 질문 할 필요도 없다. 그냥 <strong>노답</strong>이다.</p>
-<h3 id="toc_29">영원히 노답?</h3>
-
-<blockquote>
-<p><a href="https://www.facebook.com/baruntuja/posts/558112600943229">늦었다고 생각할때가 늦었다</a></p></blockquote>
-<p>정말 늦었지만 아래의 질문에 대해서 신중하게 깊이 고민했다.</p>
-<ul>
-<li>내가 좋아하는 것</li>
-<li>내가 잘하는 것</li>
-<li>나이 들어도 계속 할 수 있는 것</li>
-<li>경제적 자유를 가져다 줄 수 있는 것</li>
-<li>지루하지 않게 계속 할 수 있는 것</li>
-<li>단순/반복적이지 않은 것.</li>
-<li>등등?</li>
+<li><p>String 오른쪽, 왼쪽 shift 하기, queue방식 shift 또는 새로운 자리에는 &#39;0&#39;이 채워지도록  shift</p><pre><code class="java">String tmpStr = <span class="string">"abcdef123456"</span><span class="comment">;</span>
+// left shift
+String leftShiftStr = tmpStr<span class="preprocessor">.subString</span>(<span class="number">1</span>) + tmpStr<span class="preprocessor">.chatAt</span>(<span class="number">0</span>)<span class="comment">;</span>
+System<span class="preprocessor">.out</span><span class="preprocessor">.println</span>(<span class="string">"[left shift] : "</span> + leftShiftStr)<span class="comment">;</span>
+</code></pre></li>
+<li><p>String 길이 구하고, String -&gt; ArrayList로 변환하기</p></li>
+<li><p>String 과 String 합치기. 각 String 에서 한글자씩 뽑아서 합치기, 한 String 의 홀수 + 다른 String 의 짝수 합치기</p></li>
+<li><p>String을 특정 문자열 기준으로 자르기, 자른 문자열의 N번째 문자열 취하기. 2개이상의 특정문자열로 자르기</p></li>
+<li><p>String을 for loop에서 한글자씩 취해서 print하고 다시 원래 String으로 합치기</p></li>
+<li><p>String잘라서 collection객체만들기</p></li>
+<li><p>String 한글자씩 잘라서 정렬하기(ace, desc), 숫자끼리 문자끼리 정렬하기</p></li>
+<li><p>String의 제일 앞뒤 빈칸 제거하기, 중간에 있는 빈칸만 제거하기</p></li>
+<li><p>String의 각각의 글자를 ascii값으로 변환하고, ascii에서 다시 String으로 변환해서 합치기</p></li>
+<li><p>String &lt;-&gt; String[] 으로 변환하기</p></li>
+<li><p>String &lt;-&gt; Integer 로 변환</p></li>
 </ul>
 
-<h3 id="toc_30">결정</h3>
-<p><em class="label label-important"><strong>programmer</strong></em>가 되기로 했다.</p><p>어쩌면 아직 나에게 남아있을 그 기회를 잡기위해 미친듯이 달려보기로 했다.
-사랑하는 나의 아내와 딸을 위해 멋진 남편이자 아빠가 되기로 했다.</p>
-<h3 id="toc_31">앞으로..</h3>
-
+<h2 id="toc_2">ArrayList 관련</h2>
+<p><em class="label label-info"><strong>비교, 검색, 치환, index, 추가, 삭제, loop, shift 하는 방법 익히기</strong></em>  </p>
 <ul>
-<li>SW의 기초 과목을 차근차근 공부 할 예정이다.</li>
-<li>나만의 생태계를 갖춰야 겠다.</li>
-<li>이 바닥 소식에 뒤쳐지지 말아야겠다.</li>
-<li>꾸준함, 초심을 잃지말자.</li>
-<li>배운만큼 꼭 베풀자. 지금의 나 같은 개발자를 위해....</li>
-<li><del>뭐 좋은거 있으면 채워놓자.</del></li>
+<li>ArrayList의 index위치의 값 읽어오기, range정해서 해당 값 읽어오고 String으로 합치기</li>
 </ul>
 
-<h3 id="toc_32">마지막으로</h3>
-<p>행복한 프로그래머가 되서,
-지금 이글을 끄적였던 때를 회상하면서 웃었으면 좋겠다.
-<em class="label label-important"><strong>이것이 블로그를 시작한 이유다</strong></em></p>
+<h2 id="toc_3">collection 관련</h2>
+
+<h2 id="toc_4">디버깅 방법</h2>
+
+<h2 id="toc_5">축약 for loop</h2>
+
+<h2 id="toc_6">I/O</h2>
+
+<h2 id="toc_7">멀티스레딩</h2>
+
+<h2 id="toc_8">상속</h2>
+
+<h2 id="toc_9">인터페이스</h2>
+
                         </div>
                         <hr />
                                             
                         <div class="row-fluid">
                             
                             <div class="pull-right">
-                                <a href="/post/첫글" class="btn btn-info">첫글 <i class="icon-white icon-chevron-right"></i></a>
+                                <a href="/post/welcome-to-haroopress" class="btn btn-info">Welcome to haroopress <i class="icon-white icon-chevron-right"></i></a>
                             </div>
                             
 
-                            
-                            <div class="pull-left">
-                                <a href="/post/welcome-to-haroopress" class="btn btn-info"><i class="icon-white icon-chevron-left"></i> Welcome to haroopress</a>
-                            </div>
                             
                         </div>
                     
@@ -259,11 +243,9 @@
         <!--<div class="offset3 span9">-->
             <!--<strong>tags</strong> :-->
             <!---->
-            <!--<a href="/tag/블로그시작">블로그시작</a>&nbsp;-->
+            <!--<a href="/tag/java">java</a>&nbsp;-->
             <!---->
-            <!--<a href="/tag/초심">초심</a>&nbsp;-->
-            <!---->
-            <!--<a href="/tag/재도약">재도약</a>&nbsp;-->
+            <!--<a href="/tag/역량인증시험">역량인증시험</a>&nbsp;-->
             <!---->
         <!--</div>-->
     <!--</div>-->
