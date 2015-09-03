@@ -1,0 +1,541 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Decorators &mdash; Python Tips 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Python Tips 0.1 documentation" href="index.html"/>
+        <link rel="next" title="Global &amp; Return" href="global_&amp;_return.html"/>
+        <link rel="prev" title="Ternary Operators" href="ternary_operators.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> Python Tips</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="args_and_kwargs.html">*args and **kwargs 변수</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#args">*args 의 사용법</a></li>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#kwargs">**kwargs 사용법</a></li>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#id1">*args and **kwargs 변수를 사용해서 함수 호출하기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#id2">언제 이것들을 사용하나요?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">디버깅</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generators.html">Generators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#iterable">Iterable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#iterator">Iterator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#iteration">Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#id1">Generators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="map_&amp;_filter.html">Map &amp; Filter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="map_&amp;_filter.html#map">1. Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map_&amp;_filter.html#filter">2. Filter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="set_-_data_structure.html"><code class="docutils literal"><span class="pre">set</span></code> Data Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ternary_operators.html">Ternary Operators</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Decorators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#everything-in-python-is-an-object">Everything in python is an object:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#defining-functions-within-functions">Defining functions within functions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#returning-functions-from-within-functions">Returning functions from within functions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#giving-a-function-as-an-argument-to-another-function">Giving a function as an argument to another function:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-your-first-decorator">Writing your first decorator:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#authorization">1. Authorization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logging">2. Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="global_&amp;_return.html">Global &amp; Return</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mutation.html">Mutation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="__slots__magic.html">__slots__ Magic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="virtual_environment.html">가상 환경</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collections.html">Collections</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#defaultdict">1.<code class="docutils literal"><span class="pre">defaultdict</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#counter">2.<code class="docutils literal"><span class="pre">counter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#deque">3.<code class="docutils literal"><span class="pre">deque</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#namedtuple">4.<code class="docutils literal"><span class="pre">namedtuple</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="enumerate.html">Enumerate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_introspection.html">Object introspection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_introspection.html#dir">1.<code class="docutils literal"><span class="pre">dir</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_introspection.html#type-and-id">2.<code class="docutils literal"><span class="pre">type</span></code> and <code class="docutils literal"><span class="pre">id</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_introspection.html#inspect-module">3.<code class="docutils literal"><span class="pre">inspect</span></code> module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="comprehensions.html">Comprehensions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comprehensions.html#list-comprehensions"><code class="docutils literal"><span class="pre">list</span></code> comprehensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comprehensions.html#dict-comprehensions"><code class="docutils literal"><span class="pre">dict</span></code> comprehensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comprehensions.html#set-comprehensions"><code class="docutils literal"><span class="pre">set</span></code> comprehensions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#handling-multiple-exceptions">Handling multiple exceptions:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lambdas.html">Lambdas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_liners.html">One Liners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="for_-_else.html">For - Else</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="for_-_else.html#else-clause">1.<code class="docutils literal"><span class="pre">else</span></code> clause:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="open_function.html">Open function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="targeting_python_2_3.html">Targeting Python 2+3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coroutines.html">Coroutines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="function_caching.html">Function caching</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="function_caching.html#python-3-2">Python 3.2+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function_caching.html#python-2">Python 2+</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="context_managers.html">Context managers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="context_managers.html#implementing-context-manager-as-a-class">Implementing Context Manager as a Class:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="context_managers.html#handling-exceptions">Handling exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="context_managers.html#implementing-a-context-manager-as-a-generator">Implementing a Context Manager as a Generator</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Python Tips</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Decorators</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/decorators.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="decorators">
+<h1>Decorators<a class="headerlink" href="#decorators" title="Permalink to this headline">¶</a></h1>
+<p>Decorators 는 python 에서 굉장히 중요한 부분입니다.
+Decorator를 간단히 말하자면, 어떤 함수의 기능을 보완/수정할 수 있는 함수입니다.
+Decorator 는 code를 더 간결하고 더 python틱하게 만들어줍니다.
+대부분의 초심자들은 Decorator를 언제 사용해야 하는지 잘 알지 못합니다.
+그래서 여기서 Decorator 가 code를 간결하게 만들 수 있는 부분에 대해 공유하고자 합니다.</p>
+<p>먼저, decorator 를 어떻게 작성하는지 살펴보도록 합시다.</p>
+<p>Decorator 는 이해하기 힘든 개념중 하나일 것입니다.
+우리는 Decorator 의 완벽한 이해를 돕기위해 한 단계씩 진행해 보겠습니다.</p>
+<div class="section" id="everything-in-python-is-an-object">
+<h2>Everything in python is an object:<a class="headerlink" href="#everything-in-python-is-an-object" title="Permalink to this headline">¶</a></h2>
+<p>먼저, 아래의 python 함수를 살펴보겠습니다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">hi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;yasoob&quot;</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s">&quot;hi &quot;</span> <span class="o">+</span> <span class="n">name</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">hi</span><span class="p">())</span>
+<span class="c"># output: &#39;hi yasoob&#39;</span>
+
+<span class="c"># We can even assign a function to a variable like</span>
+<span class="n">greet</span> <span class="o">=</span> <span class="n">hi</span>
+<span class="c"># We are not using parentheses here because we are not calling the function hi</span>
+<span class="c"># instead we are just putting it into the greet variable. Let&#39;s try to run this</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">greet</span><span class="p">())</span>
+<span class="c"># output: &#39;hi yasoob&#39;</span>
+
+<span class="c"># Let&#39;s see what happens if we delete the old hi function!</span>
+<span class="k">del</span> <span class="n">hi</span>
+<span class="k">print</span><span class="p">(</span><span class="n">hi</span><span class="p">())</span>
+<span class="c">#outputs: NameError</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">greet</span><span class="p">())</span>
+<span class="c">#outputs: &#39;hi yasoob&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="defining-functions-within-functions">
+<h2>Defining functions within functions:<a class="headerlink" href="#defining-functions-within-functions" title="Permalink to this headline">¶</a></h2>
+<p>여기까지는 함수의 기본입니다. 이제 우리의 지식을 한단계 더 향상시켜 보겠습니다.
+파이썬에서는 함수 내부에 함수를 정의할 수 있습니다.
+아래 코드를 보세요.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">hi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;yasoob&quot;</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;now you are inside the hi() function&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">greet</span><span class="p">():</span>
+        <span class="k">return</span> <span class="s">&quot;now you are in the greet() function&quot;</span>
+
+    <span class="k">def</span> <span class="nf">welcome</span><span class="p">():</span>
+        <span class="k">return</span> <span class="s">&quot;now you are in the welcome() function&quot;</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="n">greet</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">welcome</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;now you are back in the hi() function&quot;</span><span class="p">)</span>
+
+<span class="n">hi</span><span class="p">()</span>
+<span class="c">#output:now you are inside the hi() function</span>
+<span class="c">#       now you are in the greet() function</span>
+<span class="c">#       now you are in the welcome() function</span>
+<span class="c">#       now you are back in the hi() function</span>
+
+<span class="c"># 이 예제는 여러분이 hi() 를 호출할 때마다, greet(), welcome() 함수가</span>
+<span class="c"># 호출되는 것을 보여줍니다. 그러나, greet(), welcome() 함수는</span>
+<span class="c"># hi() 함수의 외부에서는 호출할 수 없습니다.</span>
+
+<span class="n">greet</span><span class="p">()</span>
+<span class="c">#outputs: NameError: name &#39;greet&#39; is not defined</span>
+</pre></div>
+</div>
+<p>그래서 이제 우리는 함수안에 함수를 정의할 수 있다는 것을 알고 있습니다.
+다시 말해서, 우리는 nested 함수를 만들 수 있습니다.
+자 이제 여러분은 한가지를 더 배워야만 합니다.
+함수는 함수를 return 할 수도 있다는 것을요.</p>
+</div>
+<div class="section" id="returning-functions-from-within-functions">
+<h2>Returning functions from within functions:<a class="headerlink" href="#returning-functions-from-within-functions" title="Permalink to this headline">¶</a></h2>
+<p>함수 내부의 함수를 실행하는 것은 별로 필요 없습니다.
+우리는 단지 함수를 output으로 return 할 수만 있으면 됩니다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">hi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;yasoob&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">greet</span><span class="p">():</span>
+        <span class="k">return</span> <span class="s">&quot;now you are in the greet() function&quot;</span>
+
+    <span class="k">def</span> <span class="nf">welcome</span><span class="p">():</span>
+        <span class="k">return</span> <span class="s">&quot;now you are in the welcome() function&quot;</span>
+
+    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s">&quot;yasoob&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">greet</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">welcome</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">hi</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="c">#outputs: &lt;function greet at 0x7f2143c01500&gt;</span>
+
+<span class="c">#This clearly shows that `a` now points to the greet() function in hi()</span>
+<span class="c">#Now try this</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">())</span>
+<span class="c">#outputs: now you are in the greet() function</span>
+</pre></div>
+</div>
+<p>코드를 다시한번 자세히 보세요. <code class="docutils literal"><span class="pre">if/else</span></code> 절에서 <code class="docutils literal"><span class="pre">greet</span></code> 와 <code class="docutils literal"><span class="pre">welcome</span></code> 을
+return 했습니다. <code class="docutils literal"><span class="pre">greet()</span></code> 와 <code class="docutils literal"><span class="pre">welcome()</span></code> 이 아닙니다. 왜 이렇게 할까요?
+그 이유는 함수뒤에 괄호를 입력하면, 함수를 바로 실행하라는 의미가 됩니다.
+한편, 함수뒤에 괄호가 없으면 함수가 실행되지 않고 다른 변수에 저장할수 있는
+형태로 전달될 수 있습니다. 이해되나요? 제가 다시한번 좀 더 자세히 설명해보겠습니다.
+우리가 <code class="docutils literal"><span class="pre">a=hi()</span></code>  라고 작성을 하면, <code class="docutils literal"><span class="pre">hi()</span></code> 함수는 바로 실행이 되고,
+name변수는 yasoob 이 default 값이기 때문에, <code class="docutils literal"><span class="pre">greet</span></code> 함수가 return됩니다.
+만약 이것을 <code class="docutils literal"><span class="pre">a=hi(name</span> <span class="pre">=</span> <span class="pre">&quot;ali&quot;)</span></code> 라고 실행했다면, <code class="docutils literal"><span class="pre">welcome</span></code> 함수가 return될
+것입니다. 우리는 또한 <code class="docutils literal"><span class="pre">hi()()</span></code> 의 형태로 함수를 실행하여 아래의 문구를 출력할 수 있습니다.
+<em>now you are in the greet() function</em></p>
+</div>
+<div class="section" id="giving-a-function-as-an-argument-to-another-function">
+<h2>Giving a function as an argument to another function:<a class="headerlink" href="#giving-a-function-as-an-argument-to-another-function" title="Permalink to this headline">¶</a></h2>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">hi</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s">&quot;hi yasoob!&quot;</span>
+
+<span class="k">def</span> <span class="nf">doSomethingBeforeHi</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;I am doing some boring work before executing hi()&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">func</span><span class="p">())</span>
+
+<span class="n">doSomethingBeforeHi</span><span class="p">(</span><span class="n">hi</span><span class="p">)</span>
+<span class="c">#outputs:I am doing some boring work before executing hi()</span>
+<span class="c">#        hi yasoob!</span>
+</pre></div>
+</div>
+<p>자 이제 여러분은 decorators 가 무엇인지 이해하기 위한 사전 지식을 모두 습득하였습니다.
+Decorators 는 여러분으로 하여금 함수의 시작과 끝에 code를 수행하도록 할 것입니다.</p>
+</div>
+<div class="section" id="writing-your-first-decorator">
+<h2>Writing your first decorator:<a class="headerlink" href="#writing-your-first-decorator" title="Permalink to this headline">¶</a></h2>
+<p>마지막 예제에서 우리는 decorator 를 만들었습니다.
+자 이제 만들었던 decorator 를 수정해보고, 좀 더 유용한 프로그램으로 바꿔보겠습니다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">a_new_decorator</span><span class="p">(</span><span class="n">a_func</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">wrapTheFunction</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;I am doing some boring work before executing a_func()&quot;</span><span class="p">)</span>
+
+        <span class="n">a_func</span><span class="p">()</span>
+
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;I am doing some boring work after executing a_func()&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">wrapTheFunction</span>
+
+<span class="k">def</span> <span class="nf">a_function_requiring_decoration</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;I am the function which needs some decoration to remove my foul smell&quot;</span><span class="p">)</span>
+
+<span class="n">a_function_requiring_decoration</span><span class="p">()</span>
+<span class="c">#outputs: &quot;I am the function which needs some decoration to remove my foul smell&quot;</span>
+
+<span class="n">a_function_requiring_decoration</span> <span class="o">=</span> <span class="n">a_new_decorator</span><span class="p">(</span><span class="n">a_function_requiring_decoration</span><span class="p">)</span>
+<span class="c">#now a_function_requiring_decoration is wrapped by wrapTheFunction()</span>
+
+<span class="n">a_function_requiring_decoration</span><span class="p">()</span>
+<span class="c">#outputs:I am doing some boring work before executing a_function_requiring_decoration()</span>
+<span class="c">#        I am the function which needs some decoration to remove my foul smell</span>
+<span class="c">#        I am doing some boring work after executing a_function_requiring_decoration()</span>
+</pre></div>
+</div>
+<p>위 코드가 이해되시나요? 우리는 사전에 배운 원리/개념을 적용하였습니다.
+이것이 바로 python에서 decorator 가 동작하는 원리입니다. decorator 는 함수를
+감싸고 기존 함수의 동작을 수정합니다.(기존 함수 자체를 수정하진 않음)
+여러분은 코드에서 왜 &#8216;&#64;&#8217; 를 사용하지 않았는지 궁금해 할 것입니다.
+&#8216;&#64;&#8217;는 단지 decorator 함수를 손쉽게 만들어주기만 할뿐 위 코드와 동작은 동일합니다.
+자 이제 아래에 &#8216;&#64;&#8217; 를 이용해서 위 코드와 동일하게 구현해보겠습니다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="nd">@a_new_decorator</span>
+<span class="k">def</span> <span class="nf">a_function_requiring_decoration</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Hey you! Decorate me!&quot;&quot;&quot;</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;I am the function which needs some decoration to &quot;</span>
+          <span class="s">&quot;remove my foul smell&quot;</span><span class="p">)</span>
+
+<span class="n">a_function_requiring_decoration</span><span class="p">()</span>
+<span class="c">#outputs: I am doing some boring work before executing a_function_requiring_decoration()</span>
+<span class="c">#         I am the function which needs some decoration to remove my foul smell</span>
+<span class="c">#         I am doing some boring work after executing a_function_requiring_decoration()</span>
+
+<span class="c"># @a_new_decorator 는 단지 짧은 표현방법입니다.</span>
+<span class="n">a_function_requiring_decoration</span> <span class="o">=</span> <span class="n">a_new_decorator</span><span class="p">(</span><span class="n">a_function_requiring_decoration</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>이제 여러분은 python에서 decorators 가 어떻게 동작하는지 이해가 되셨으리라 믿습니다.
+현재 위 코드에는 한가지 문제점이 있습니다. 만약 아래와 같이 실행한다면 어떻게 될까요?</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">a_function_requiring_decoration</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+<span class="c"># Output: wrapTheFunction</span>
+</pre></div>
+</div>
+<p>위 결과는 예상했던 것과 다릅니다. 함수의 이름은 &#8220;a_function_requiring_decoration&#8221; 이죠.
+( &#8216;Output: wrapTheFunction&#8217; 이 아닙니다 ) a_function_requiring_decoration 함수는
+wrapTheFunction 으로 바뀌었습니다. decorator 함수의 내용으로 모든 것이
+변경되었습니다. ( name, docstring ). 운이 좋게도 python에서는 이 문제를 해결할
+간단한 solution(<code class="docutils literal"><span class="pre">functools.wraps</span></code>)을 제공합니다. <code class="docutils literal"><span class="pre">functools.wraps</span></code> 를 이용하여
+위 코드를 수정해보겠습니다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+
+<span class="k">def</span> <span class="nf">a_new_decorator</span><span class="p">(</span><span class="n">a_func</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">a_func</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">wrapTheFunction</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;I am doing some boring work before executing a_func()&quot;</span><span class="p">)</span>
+        <span class="n">a_func</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;I am doing some boring work after executing a_func()&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wrapTheFunction</span>
+
+<span class="nd">@a_new_decorator</span>
+<span class="k">def</span> <span class="nf">a_function_requiring_decoration</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Hey yo! Decorate me!&quot;&quot;&quot;</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;I am the function which needs some decoration to &quot;</span>
+          <span class="s">&quot;remove my foul smell&quot;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a_function_requiring_decoration</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+<span class="c"># Output: a_function_requiring_decoration</span>
+</pre></div>
+</div>
+<p>자 이제 이전에 발생했던 문제가 해결되었습니다.
+decorators 의 다양한 use-cases를 배우기 위해 다음으로 넘어가볼까요?</p>
+<p><strong>Blueprint:</strong></p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+<span class="k">def</span> <span class="nf">decorator_name</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">decorated</span><span class="p">(</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">can_run</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">&quot;Function will not run&quot;</span>
+        <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">decorated</span>
+
+<span class="nd">@decorator_name</span>
+<span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Function is running&quot;</span><span class="p">)</span>
+
+<span class="n">can_run</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="k">print</span><span class="p">(</span><span class="n">func</span><span class="p">())</span>
+<span class="c"># Output: Function is running</span>
+
+<span class="n">can_run</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="k">print</span><span class="p">(</span><span class="n">func</span><span class="p">())</span>
+<span class="c"># Output: Function will not run</span>
+</pre></div>
+</div>
+<p>참고사항: <code class="docutils literal"><span class="pre">&#64;wraps</span></code> 는 장식에 사용될 함수를 인자로 받은 후,
+인자로 넘겨받은 함수의 name, docstring, arguments list, 기타 등등의 속성/기능들을
+추가합니다. 이는 decorator 내부에서 이미 decorated 된 함수의 속성에 접근할 수 있도록 해줍니다.</p>
+<div class="section" id="use-cases">
+<h3>Use-cases:<a class="headerlink" href="#use-cases" title="Permalink to this headline">¶</a></h3>
+<p>이장에서는 decorators 가 무언가를 쉽게 관리할수 있는 사용법과, decorators가 정말로
+멋지에 사용되는 부분을 살펴보겠습니다.</p>
+</div>
+</div>
+<div class="section" id="authorization">
+<h2>1. Authorization<a class="headerlink" href="#authorization" title="Permalink to this headline">¶</a></h2>
+<p>decorator 는 web application 의 사용자와의 접점에서 어떤 사용자가
+권한을 가지고 있는지 확인하는데 도움을 줍니다. decorator는 Flask 웹 프레임워크,
+Django 웹 프레임워크에서 널리 사용되고 있습니다.
+아래는 authentication 에 사용되는 decorator 를 사용하는 예제입니다.</p>
+<p><strong>Example :</strong></p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+
+<span class="k">def</span> <span class="nf">requires_auth</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">decorated</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">auth</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">authorization</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">auth</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">check_auth</span><span class="p">(</span><span class="n">auth</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">auth</span><span class="o">.</span><span class="n">password</span><span class="p">):</span>
+            <span class="n">authenticate</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">decorated</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="logging">
+<h2>2. Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h2>
+<p>Logging은 decorators 가 아주 유용하게 사용되는 또 다른 영역입니다.
+다음은 예제입니다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+
+<span class="k">def</span> <span class="nf">logit</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">with_logging</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">__name__</span> <span class="o">+</span> <span class="s">&quot; was called&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">with_logging</span>
+
+<span class="nd">@logit</span>
+<span class="k">def</span> <span class="nf">addition_func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+   <span class="sd">&quot;&quot;&quot;Do some math.&quot;&quot;&quot;</span>
+   <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span>
+
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">addition_func</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="c"># Output: addition_func was called</span>
+</pre></div>
+</div>
+<p>이제 여러분은 decorators 를 현명하게 사용하는 방법에 대해서 고민하고 있을거라 생각합니다.</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="global_&amp;_return.html" class="btn btn-neutral float-right" title="Global &amp; Return">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ternary_operators.html" class="btn btn-neutral" title="Ternary Operators"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Muhammad Yasoob Ullah Khalid.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

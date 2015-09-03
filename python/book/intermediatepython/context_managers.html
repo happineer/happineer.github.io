@@ -1,0 +1,402 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Context managers &mdash; Python Tips 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Python Tips 0.1 documentation" href="index.html"/>
+        <link rel="prev" title="Function caching" href="function_caching.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> Python Tips</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="args_and_kwargs.html">*args and **kwargs 변수</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#args">*args 의 사용법</a></li>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#kwargs">**kwargs 사용법</a></li>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#id1">*args and **kwargs 변수를 사용해서 함수 호출하기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#id2">언제 이것들을 사용하나요?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">디버깅</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generators.html">Generators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#iterable">Iterable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#iterator">Iterator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#iteration">Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#id1">Generators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="map_&amp;_filter.html">Map &amp; Filter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="map_&amp;_filter.html#map">1. Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map_&amp;_filter.html#filter">2. Filter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="set_-_data_structure.html"><code class="docutils literal"><span class="pre">set</span></code> Data Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ternary_operators.html">Ternary Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorators.html">Decorators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#everything-in-python-is-an-object">Everything in python is an object:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#defining-functions-within-functions">Defining functions within functions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#returning-functions-from-within-functions">Returning functions from within functions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#giving-a-function-as-an-argument-to-another-function">Giving a function as an argument to another function:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#writing-your-first-decorator">Writing your first decorator:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#authorization">1. Authorization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#logging">2. Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="global_&amp;_return.html">Global &amp; Return</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mutation.html">Mutation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="__slots__magic.html">__slots__ Magic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="virtual_environment.html">가상 환경</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collections.html">Collections</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#defaultdict">1.<code class="docutils literal"><span class="pre">defaultdict</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#counter">2.<code class="docutils literal"><span class="pre">counter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#deque">3.<code class="docutils literal"><span class="pre">deque</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#namedtuple">4.<code class="docutils literal"><span class="pre">namedtuple</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="enumerate.html">Enumerate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_introspection.html">Object introspection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_introspection.html#dir">1.<code class="docutils literal"><span class="pre">dir</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_introspection.html#type-and-id">2.<code class="docutils literal"><span class="pre">type</span></code> and <code class="docutils literal"><span class="pre">id</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_introspection.html#inspect-module">3.<code class="docutils literal"><span class="pre">inspect</span></code> module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="comprehensions.html">Comprehensions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comprehensions.html#list-comprehensions"><code class="docutils literal"><span class="pre">list</span></code> comprehensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comprehensions.html#dict-comprehensions"><code class="docutils literal"><span class="pre">dict</span></code> comprehensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comprehensions.html#set-comprehensions"><code class="docutils literal"><span class="pre">set</span></code> comprehensions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#handling-multiple-exceptions">Handling multiple exceptions:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lambdas.html">Lambdas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_liners.html">One Liners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="for_-_else.html">For - Else</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="for_-_else.html#else-clause">1.<code class="docutils literal"><span class="pre">else</span></code> clause:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="open_function.html">Open function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="targeting_python_2_3.html">Targeting Python 2+3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coroutines.html">Coroutines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="function_caching.html">Function caching</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="function_caching.html#python-3-2">Python 3.2+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function_caching.html#python-2">Python 2+</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Context managers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#implementing-context-manager-as-a-class">Implementing Context Manager as a Class:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#handling-exceptions">Handling exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#implementing-a-context-manager-as-a-generator">Implementing a Context Manager as a Generator</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Python Tips</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Context managers</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/context_managers.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="context-managers">
+<h1>Context managers<a class="headerlink" href="#context-managers" title="Permalink to this headline">¶</a></h1>
+<p>Context manager는 여러분이 자원을 정확하게 할당/해제를 하고자 할때 도와줍니다.
+context manager의 대부분의 사용 예제는 <code class="docutils literal"><span class="pre">with</span></code> 문 입니다. 여러분이 코드의
+한 블록 안에서 쌍으로 실행하고자 하는 2개의 연관있는 operation을 가지고
+있다고 해봅시다. Context manager는 당신이 그것을 실수없이(정확하게)
+할 수 있도록 해줍니다. 예제:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;some_file&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">opened_file</span><span class="p">:</span>
+    <span class="n">opened_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;Hola!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>위 code는 파일을 open 하고, 임의의 data를 file에 쓰고 close합니다.
+만약 data를 파일에 쓰는중에 error가 발생한다면 file close 를 시도하게 됩니다.
+위 코드는 아래 코드와 동일합니다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;some_file&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;Hola!&#39;</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>이전 코드와 비교를 해보면, <code class="docutils literal"><span class="pre">with</span></code> 문을 사용함으로써
+많은 boilerplate code가 제거된 것을 알 수 있습니다. <code class="docutils literal"><span class="pre">with</span></code> 문을
+사용했을 때의 최대 장점은 우리가 아무런 신경을 쓰지 않아도
+nested 블럭안에서 나갈 때에는 작업 중인 file 이 반드시 close 된다는 점입니다.</p>
+<p>Context manager 의 일반적인 사용법은 자원의 lock/unlock 그리고 open된
+파일을 closing 해주는 것입니다. (이미 앞에서 살펴봤습니다)</p>
+<p>이제 우리의 context manager를 구현하는 방법에 대해서 알아보겠습니다.
+이것은 뒷 단에서 어떻게 동작하는지 이해할 수 있도록 해줍니다.</p>
+<div class="section" id="implementing-context-manager-as-a-class">
+<h2>Implementing Context Manager as a Class:<a class="headerlink" href="#implementing-context-manager-as-a-class" title="Permalink to this headline">¶</a></h2>
+<p>At the very least a context manager has an <code class="docutils literal"><span class="pre">__enter__</span></code> and
+<code class="docutils literal"><span class="pre">__exit__</span></code> methods defined. Let&#8217;s make our own file opening Context
+Manager and learn the basics.</p>
+<p>context manager 는 최소한 <code class="docutils literal"><span class="pre">__enter__</span></code> 그리고 <code class="docutils literal"><span class="pre">__exit__</span></code>
+Method를 가지고 있어야 합니다. 자 이제 context manager을 open한 우리의 file을
+생성해 보겠습니다. 그리고 원리를 배워봅시다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">File</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">method</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file_obj</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">method</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_obj</span>
+    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file_obj</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>단순히 <code class="docutils literal"><span class="pre">__enger__</span></code> , <code class="docutils literal"><span class="pre">__exit__</span></code> method를 정의하고, 우리는
+<code class="docutils literal"><span class="pre">with</span></code> 구문에서 사용하기만 하면 됩니다. 해볼까요?</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">with</span> <span class="n">File</span><span class="p">(</span><span class="s">&#39;demo.txt&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">opened_file</span><span class="p">:</span>
+    <span class="n">opened_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;Hola!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>우리가 생성한 <code class="docutils literal"><span class="pre">__exit__</span></code> 함수는 3개의 인자를 갖습니다.
+3개의 인자는 context manager 클래스를 구성하는 모든 <code class="docutils literal"><span class="pre">__exit__</span></code> 함수에서
+필수입니다. 자 이제 내부적으로 어떤 일이 벌어졌는지 알아볼까요?</p>
+<ol class="arabic simple">
+<li><code class="docutils literal"><span class="pre">with</span></code> 구문은 <code class="docutils literal"><span class="pre">File</span></code> 클래스의 <code class="docutils literal"><span class="pre">__exit__</span></code> method 를저장한다.</li>
+<li><code class="docutils literal"><span class="pre">File</span></code> 클래스의 <code class="docutils literal"><span class="pre">__enter__</span></code> method 를 호출한다.</li>
+<li><code class="docutils literal"><span class="pre">__enter__</span></code> method 는 file 을 열고, 그것을 return 한다.</li>
+<li>open 된 파일의 참조(handle)는 <code class="docutils literal"><span class="pre">opened_file</span></code> 에게 전달된다.</li>
+<li><code class="docutils literal"><span class="pre">.write()</span></code> 를 이용해서 파일에 write 한다.</li>
+<li><code class="docutils literal"><span class="pre">with</span></code> 구문은 저장되어 있는 <code class="docutils literal"><span class="pre">__exit__</span></code> method 를 호출한다.</li>
+<li><code class="docutils literal"><span class="pre">__exit__</span></code> method 는 파일을 close 한다.</li>
+</ol>
+</div>
+<div class="section" id="handling-exceptions">
+<h2>Handling exceptions<a class="headerlink" href="#handling-exceptions" title="Permalink to this headline">¶</a></h2>
+<p>우리는 <code class="docutils literal"><span class="pre">__exit__</span></code> method 와 <code class="docutils literal"><span class="pre">type</span></code>, <code class="docutils literal"><span class="pre">value</span></code> and <code class="docutils literal"><span class="pre">traceback</span></code> 인자에 대해서
+아직 논의하지 않았다. 위 단계에서 4단계와 6단계 사이에 exception이 발생한다면
+python 은 exception의 type, value 그리고 traceback 을 <code class="docutils literal"><span class="pre">__exit__</span></code> method에 전달한다.
+이는 <code class="docutils literal"><span class="pre">__exit__</span></code> method 가 어떻게 파일을 close 할 것인지, 그리고 추가로
+해야 할 작업은 없는지 결정하도록 한다. 위에서 다뤘던 경우에는
+이런 것들에 대해서 전혀 신경 쓸 필요가 없다.</p>
+<p>file 객체가 exception 을 발생시키면 무슨 일이 일어날까요?
+우리는 file 객체에서 제공하지 않는 method 의 접근을 시도할 것입니다.
+예를 들면 아래와 같습니다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">with</span> <span class="n">File</span><span class="p">(</span><span class="s">&#39;demo.txt&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">opened_file</span><span class="p">:</span>
+    <span class="n">opened_file</span><span class="o">.</span><span class="n">undefined_function</span><span class="p">(</span><span class="s">&#39;Hola!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Error 를 만났을 때, <code class="docutils literal"><span class="pre">with</span></code> 구문에 의해 수행되는 절차를 아래에 나열해 봅시다</p>
+<ol class="arabic simple">
+<li>error 에 대한 type, value 그리고 traceback을 <code class="docutils literal"><span class="pre">__exit__</span></code> method의 인자로 전달합니다.</li>
+<li>이것은 <code class="docutils literal"><span class="pre">__exit__</span></code> method 가 exception을 처리하도록 합니다.</li>
+</ol>
+<p>3. 만약 <code class="docutils literal"><span class="pre">__exit__</span></code> method 가 True를 return 하면, exception은
+훌륭하게 처리가 된 것입니다.
+4. 만약 True가 아닌 무언가가 <code class="docutils literal"><span class="pre">__exit__</span></code> method 로부터 return 되었다면
+exception 은 <code class="docutils literal"><span class="pre">with</span></code> 구문에 의해서 발생한 것입니다.</p>
+<p>이번 case에서 <code class="docutils literal"><span class="pre">__exit__</span></code> method 가 <code class="docutils literal"><span class="pre">None</span></code> (return 구문이 없을 경우,
+method 는 <code class="docutils literal"><span class="pre">None</span></code> 을 return 합니다) 을 return 하였습니다.
+그래서 <code class="docutils literal"><span class="pre">with</span></code> 구문이 exception을 발생시켰다는 것을 알 수 있습니다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre>Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 2, in &lt;module&gt;
+AttributeError: &#39;file&#39; object has no attribute &#39;undefined_function&#39;
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">__exit__</span></code> method 안에서 exception을 처리해봅시다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">File</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">method</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file_obj</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">method</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_obj</span>
+    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s">&quot;Exception has been handled&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file_obj</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">True</span>
+
+<span class="k">with</span> <span class="n">File</span><span class="p">(</span><span class="s">&#39;demo.txt&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">opened_file</span><span class="p">:</span>
+    <span class="n">opened_file</span><span class="o">.</span><span class="n">undefined_function</span><span class="p">()</span>
+
+<span class="c"># Output: Exception has been handled</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">__exit__</span></code> method 가 True 를 return 하였습니다. 그래서 <code class="docutils literal"><span class="pre">with</span></code> 구문에서
+발생시킨 exception은 없습니다.</p>
+<p>이것은 context managers를 구현하는 유일한 방법이 아닙니다.
+다른 방법이 있습니다. 우리는 다음장에서 이것에 대해 알아보겠습니다.</p>
+</div>
+<div class="section" id="implementing-a-context-manager-as-a-generator">
+<h2>Implementing a Context Manager as a Generator<a class="headerlink" href="#implementing-a-context-manager-as-a-generator" title="Permalink to this headline">¶</a></h2>
+<p>우리는 decorators 와 generators 를 이용하여 context manager를 구현할 수 있습니다.
+python 은 이러한 목적으로 contextlib모듈을 가지고 있습니다. class 대신에 우리는
+generator 함수를 이용해서 context manager를 구현 할 수 있습니다.
+기본 적인 내용을 알아봅시다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
+
+<span class="nd">@contextmanager</span>
+<span class="k">def</span> <span class="nf">open_file</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
+    <span class="k">yield</span> <span class="n">f</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>맞습니다. context manager를 구현하는 이 방법은 더 직관적이고 쉽습니다.
+그러나 이렇게 구현하기 위해서는 generators, yeild 그리고 decorators 에 대해서
+지식이 필요합니다. 이번 예제에서는 우리는 임의의 어떤 exception 도 처리하지 않습니다.
+대부분은 앞에서 살펴본 method 와 동일한 방법으로 작동합니다.</p>
+<p>이 method를 조금 들여다 보겠습니다.</p>
+<p>1. Python은 <code class="docutils literal"><span class="pre">yield</span></code> 키워드를 만납니다. 그래서, 일반 함수가 아닌
+generator 를 만들게 됩니다.
+2. Decoration 때문에 open_file 이라는 함수를 인자로 하는 contextmanager 가
+호출 됩니다.
+3. <code class="docutils literal"><span class="pre">contextmanager</span></code> 함수는 <code class="docutils literal"><span class="pre">GeneratorContextManager</span></code> 객체로 wrapping된
+generator 를 return 합니다.
+4. <code class="docutils literal"><span class="pre">GeneratorContextManager</span></code> 는 <code class="docutils literal"><span class="pre">open_file</span></code> 에 함수에 할당됩니다.
+그래서 우리가 <code class="docutils literal"><span class="pre">open_file</span></code> 함수를 호출하면, 우리는 실제로
+<code class="docutils literal"><span class="pre">GeneratorContextManager</span></code> object 를 호출하는 것입니다.</p>
+<p>지금까지 이것에 대해서 다 알아봤다.
+이제 우리는 새롭게 생성된 ContextManager 를 아래와 같이 사용할 수 있다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">with</span> <span class="n">open_file</span><span class="p">(</span><span class="s">&#39;some_file&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;hola!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="function_caching.html" class="btn btn-neutral" title="Function caching"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Muhammad Yasoob Ullah Khalid.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

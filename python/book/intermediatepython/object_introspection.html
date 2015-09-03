@@ -1,0 +1,317 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Object introspection &mdash; Python Tips 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Python Tips 0.1 documentation" href="index.html"/>
+        <link rel="next" title="Comprehensions" href="comprehensions.html"/>
+        <link rel="prev" title="Enumerate" href="enumerate.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> Python Tips</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="args_and_kwargs.html">*args and **kwargs 변수</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#args">*args 의 사용법</a></li>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#kwargs">**kwargs 사용법</a></li>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#id1">*args and **kwargs 변수를 사용해서 함수 호출하기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#id2">언제 이것들을 사용하나요?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">디버깅</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generators.html">Generators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#iterable">Iterable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#iterator">Iterator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#iteration">Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#id1">Generators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="map_&amp;_filter.html">Map &amp; Filter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="map_&amp;_filter.html#map">1. Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map_&amp;_filter.html#filter">2. Filter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="set_-_data_structure.html"><code class="docutils literal"><span class="pre">set</span></code> Data Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ternary_operators.html">Ternary Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorators.html">Decorators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#everything-in-python-is-an-object">Everything in python is an object:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#defining-functions-within-functions">Defining functions within functions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#returning-functions-from-within-functions">Returning functions from within functions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#giving-a-function-as-an-argument-to-another-function">Giving a function as an argument to another function:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#writing-your-first-decorator">Writing your first decorator:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#authorization">1. Authorization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#logging">2. Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="global_&amp;_return.html">Global &amp; Return</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mutation.html">Mutation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="__slots__magic.html">__slots__ Magic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="virtual_environment.html">가상 환경</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collections.html">Collections</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#defaultdict">1.<code class="docutils literal"><span class="pre">defaultdict</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#counter">2.<code class="docutils literal"><span class="pre">counter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#deque">3.<code class="docutils literal"><span class="pre">deque</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#namedtuple">4.<code class="docutils literal"><span class="pre">namedtuple</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="enumerate.html">Enumerate</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Object introspection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dir">1.<code class="docutils literal"><span class="pre">dir</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#type-and-id">2.<code class="docutils literal"><span class="pre">type</span></code> and <code class="docutils literal"><span class="pre">id</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inspect-module">3.<code class="docutils literal"><span class="pre">inspect</span></code> module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="comprehensions.html">Comprehensions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comprehensions.html#list-comprehensions"><code class="docutils literal"><span class="pre">list</span></code> comprehensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comprehensions.html#dict-comprehensions"><code class="docutils literal"><span class="pre">dict</span></code> comprehensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comprehensions.html#set-comprehensions"><code class="docutils literal"><span class="pre">set</span></code> comprehensions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#handling-multiple-exceptions">Handling multiple exceptions:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lambdas.html">Lambdas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_liners.html">One Liners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="for_-_else.html">For - Else</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="for_-_else.html#else-clause">1.<code class="docutils literal"><span class="pre">else</span></code> clause:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="open_function.html">Open function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="targeting_python_2_3.html">Targeting Python 2+3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coroutines.html">Coroutines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="function_caching.html">Function caching</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="function_caching.html#python-3-2">Python 3.2+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function_caching.html#python-2">Python 2+</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="context_managers.html">Context managers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="context_managers.html#implementing-context-manager-as-a-class">Implementing Context Manager as a Class:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="context_managers.html#handling-exceptions">Handling exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="context_managers.html#implementing-a-context-manager-as-a-generator">Implementing a Context Manager as a Generator</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Python Tips</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Object introspection</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/object_introspection.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="object-introspection">
+<h1>Object introspection<a class="headerlink" href="#object-introspection" title="Permalink to this headline">¶</a></h1>
+<p>컴퓨터 프로그래밍에서 introspection 은 runtime 에 object 타입을 결정하는
+능력을 말합니다. 이는 python의 장점중 하나입니다.
+python에서 모든 것은 객체이고 우리는 이러한 객체들을 검사할 수 있습니다.
+python 은 이러한 작업을 수행할 수 있는 몇몇 built-in 함수, 모듈과 함께 배포됩니다.</p>
+<div class="section" id="dir">
+<h2>1.<code class="docutils literal"><span class="pre">dir</span></code><a class="headerlink" href="#dir" title="Permalink to this headline">¶</a></h2>
+<p>이번장에서는 우리는 <code class="docutils literal"><span class="pre">dir</span></code> 에 대해서 배울 것이며, <code class="docutils literal"><span class="pre">dir</span></code> 이 어떻게
+introspection 에 유용한지에 대해서도 배울 것입니다.</p>
+<p><code class="docutils literal"><span class="pre">dir</span></code> 은 introspection 에 있어서 중요한 함수 중 하나입니다.
+<code class="docutils literal"><span class="pre">dir</span></code> 은 객체에 포함된 속성과 method 의 list 를 return 합니다.
+아래 예제가 있습니다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="nb">dir</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+<span class="c"># Output: [&#39;__add__&#39;, &#39;__class__&#39;, &#39;__contains__&#39;, &#39;__delattr__&#39;, &#39;__delitem__&#39;,</span>
+<span class="c"># &#39;__delslice__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;,</span>
+<span class="c"># &#39;__getitem__&#39;, &#39;__getslice__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__iadd__&#39;, &#39;__imul__&#39;,</span>
+<span class="c"># &#39;__init__&#39;, &#39;__iter__&#39;, &#39;__le__&#39;, &#39;__len__&#39;, &#39;__lt__&#39;, &#39;__mul__&#39;, &#39;__ne__&#39;,</span>
+<span class="c"># &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__reversed__&#39;, &#39;__rmul__&#39;,</span>
+<span class="c"># &#39;__setattr__&#39;, &#39;__setitem__&#39;, &#39;__setslice__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;,</span>
+<span class="c"># &#39;__subclasshook__&#39;, &#39;append&#39;, &#39;count&#39;, &#39;extend&#39;, &#39;index&#39;, &#39;insert&#39;, &#39;pop&#39;,</span>
+<span class="c"># &#39;remove&#39;, &#39;reverse&#39;, &#39;sort&#39;]</span>
+</pre></div>
+</div>
+<p>introspection 은 우리에게 list 의 모든 method 이름을 알려줍니다.
+method의 이름을 기억할 수 없을때 이것은 매우 편리합니다.
+아무런 인자 없이 <code class="docutils literal"><span class="pre">dir()</span></code> 을 수행하면 현재 scope 의 모든 속성,method 이름을 return 합니다.</p>
+</div>
+<div class="section" id="type-and-id">
+<h2>2.<code class="docutils literal"><span class="pre">type</span></code> and <code class="docutils literal"><span class="pre">id</span></code><a class="headerlink" href="#type-and-id" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">type</span></code> 함수는 객체의 type을 return 합니다. 예를 들면..</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">))</span>
+<span class="c"># Output: &lt;type &#39;str&#39;&gt;</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">([]))</span>
+<span class="c"># Output: &lt;type &#39;list&#39;&gt;</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">({}))</span>
+<span class="c"># Output: &lt;type &#39;dict&#39;&gt;</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="nb">dict</span><span class="p">))</span>
+<span class="c"># Output: &lt;type &#39;type&#39;&gt;</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="c"># Output: &lt;type &#39;int&#39;&gt;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">id</span></code> 는 다양한 객체의 유일한 id 값을 return 합니다. 예를 들면:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;Yasoob&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+<span class="c"># Output: 139972439030304</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inspect-module">
+<h2>3.<code class="docutils literal"><span class="pre">inspect</span></code> module<a class="headerlink" href="#inspect-module" title="Permalink to this headline">¶</a></h2>
+<p>inspect 모듈 또한 실행중인 객체의 정보를 얻을 수 있는 몇가지 유용한 함수를 제공합니다.
+예를 들면, 여러분은 실행중인 객체의 member를 확인할 수 있습니다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">inspect</span>
+<span class="k">print</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
+<span class="c"># Output: [(&#39;__add__&#39;, &lt;slot wrapper &#39;__add__&#39; of ... ...</span>
+</pre></div>
+</div>
+<p>이 외에도 introspection 을 도와줄  다양한 method 들이 있습니다.
+만약 여러분이 원한하면 여러분은 좀 더 알아볼 수 있습니다.</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="comprehensions.html" class="btn btn-neutral float-right" title="Comprehensions">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="enumerate.html" class="btn btn-neutral" title="Enumerate"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Muhammad Yasoob Ullah Khalid.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

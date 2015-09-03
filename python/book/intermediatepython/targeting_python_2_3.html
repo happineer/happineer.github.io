@@ -1,0 +1,341 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Targeting Python 2+3 &mdash; Python Tips 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Python Tips 0.1 documentation" href="index.html"/>
+        <link rel="next" title="Coroutines" href="coroutines.html"/>
+        <link rel="prev" title="Open function" href="open_function.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> Python Tips</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="args_and_kwargs.html">*args and **kwargs 변수</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#args">*args 의 사용법</a></li>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#kwargs">**kwargs 사용법</a></li>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#id1">*args and **kwargs 변수를 사용해서 함수 호출하기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#id2">언제 이것들을 사용하나요?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">디버깅</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generators.html">Generators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#iterable">Iterable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#iterator">Iterator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#iteration">Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#id1">Generators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="map_&amp;_filter.html">Map &amp; Filter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="map_&amp;_filter.html#map">1. Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map_&amp;_filter.html#filter">2. Filter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="set_-_data_structure.html"><code class="docutils literal"><span class="pre">set</span></code> Data Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ternary_operators.html">Ternary Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorators.html">Decorators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#everything-in-python-is-an-object">Everything in python is an object:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#defining-functions-within-functions">Defining functions within functions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#returning-functions-from-within-functions">Returning functions from within functions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#giving-a-function-as-an-argument-to-another-function">Giving a function as an argument to another function:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#writing-your-first-decorator">Writing your first decorator:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#authorization">1. Authorization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#logging">2. Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="global_&amp;_return.html">Global &amp; Return</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mutation.html">Mutation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="__slots__magic.html">__slots__ Magic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="virtual_environment.html">가상 환경</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collections.html">Collections</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#defaultdict">1.<code class="docutils literal"><span class="pre">defaultdict</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#counter">2.<code class="docutils literal"><span class="pre">counter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#deque">3.<code class="docutils literal"><span class="pre">deque</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#namedtuple">4.<code class="docutils literal"><span class="pre">namedtuple</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="enumerate.html">Enumerate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_introspection.html">Object introspection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_introspection.html#dir">1.<code class="docutils literal"><span class="pre">dir</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_introspection.html#type-and-id">2.<code class="docutils literal"><span class="pre">type</span></code> and <code class="docutils literal"><span class="pre">id</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_introspection.html#inspect-module">3.<code class="docutils literal"><span class="pre">inspect</span></code> module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="comprehensions.html">Comprehensions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comprehensions.html#list-comprehensions"><code class="docutils literal"><span class="pre">list</span></code> comprehensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comprehensions.html#dict-comprehensions"><code class="docutils literal"><span class="pre">dict</span></code> comprehensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comprehensions.html#set-comprehensions"><code class="docutils literal"><span class="pre">set</span></code> comprehensions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#handling-multiple-exceptions">Handling multiple exceptions:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lambdas.html">Lambdas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_liners.html">One Liners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="for_-_else.html">For - Else</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="for_-_else.html#else-clause">1.<code class="docutils literal"><span class="pre">else</span></code> clause:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="open_function.html">Open function</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Targeting Python 2+3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coroutines.html">Coroutines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="function_caching.html">Function caching</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="function_caching.html#python-3-2">Python 3.2+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function_caching.html#python-2">Python 2+</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="context_managers.html">Context managers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="context_managers.html#implementing-context-manager-as-a-class">Implementing Context Manager as a Class:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="context_managers.html#handling-exceptions">Handling exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="context_managers.html#implementing-a-context-manager-as-a-generator">Implementing a Context Manager as a Generator</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Python Tips</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Targeting Python 2+3</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/targeting_python_2_3.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="targeting-python-2-3">
+<h1>Targeting Python 2+3<a class="headerlink" href="#targeting-python-2-3" title="Permalink to this headline">¶</a></h1>
+<p>다양한 case에서 여러분은 python2+ 와 python3+ 에서 모두 잘 동작하는
+programs 을 개발하고 싶을 것입니다.</p>
+<p>여러분은 아주 유명한 수백명의 사람들이 사용하는 모듈을 가지고 있다고 상상해 보세요
+그러나 이 모든 사람들이 python2 또는 python3 를 사용하진 않습니다.
+이러한 경우에 여러분은 2가지를 선택할 수 있습니다.
+첫번째는 2개의 모듈을 배포하는 것입니다. 하나는 python2, 다른 하나는 python3.
+다른 방법은 여러분의 코드가 python2, python3 모두 호환되도록 수정하는 것입니다.</p>
+<p>이번 장에서는 여러분의 script 가 python2, 3 에서 호환되도록 만들때 활용할 수 있는
+몇가지 trick 을 강조할 것입니다.</p>
+<p><strong>Future imports</strong></p>
+<p>먼저, 가장 중요한 방법은 <code class="docutils literal"><span class="pre">__future__</span></code> imports 를 사용하는 것입니다.
+이것은 여러분이 python2 에서 python3 기능을 import 할 수 있도록 해줍니다.
+아래 예제가 있습니다.</p>
+<ul class="simple">
+<li>Context managers 은 python 2.6+ 에서 처음 등장했습니다. python2.5 에서 이를 사용하기 위해서는
+아래와 같이 하면 됩니다.</li>
+</ul>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">with_statement</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">print</span></code> 함수</li>
+</ul>
+<p><code class="docutils literal"><span class="pre">print</span></code> 는 python3 함수로 변경되었습니다. 만약 여러분이 python2 에서
+사용하고자 한다면 <code class="docutils literal"><span class="pre">__future__</span></code> 로부터 import 할수 있습니다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span>
+<span class="c"># Output:</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="k">print</span><span class="p">(</span><span class="k">print</span><span class="p">)</span>
+<span class="c"># Output: &lt;built-in function print&gt;</span>
+</pre></div>
+</div>
+<p><strong>module rename 하는방법</strong></p>
+<p>여러분의 script 에서 어떻게 packages 를 import 하는지 말해주세요.
+우리 대부분은 아래와 같이 합니다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">foo</span>
+<span class="c"># or</span>
+<span class="kn">from</span> <span class="nn">foo</span> <span class="kn">import</span> <span class="n">bar</span>
+</pre></div>
+</div>
+<p>여러분도 무언가를 이렇게 할 수 있다는것 을 알고 있나요?</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">foo</span> <span class="kn">as</span> <span class="nn">foo</span>
+</pre></div>
+</div>
+<p>이것의(as를 사용한 것) 기능은 위에서 봤던 코드의 기능과 동일하다는 것을 알고 있습니다. 하지만
+이것은(rename module) 여러분의 스크립트가 python2, 3 과 호환되도록 하는데 꼭 필요한 요소입니다.
+아래의 코드를 살펴보겠습니다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">urllib.request</span> <span class="kn">as</span> <span class="nn">urllib_request</span>  <span class="c"># for Python 3</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">urllib2</span> <span class="kn">as</span> <span class="nn">urllib_request</span>  <span class="c"># for Python 2</span>
+</pre></div>
+</div>
+<p>그래서, 위 code 를 약간 설명해보겠습니다. 우리는 import 구문을 try,except 절로
+감쌌습니다. 우리가 이렇게 한 이유는 python2 에서는 <code class="docutils literal"><span class="pre">urllib.request</span></code> 모듈이 없어서
+그 결과 ImportError 를 발생시키기 때문입니다. <code class="docutils literal"><span class="pre">urllib.request</span></code> 의 기능은 python2에서는
+<code class="docutils literal"><span class="pre">urllib2</span></code> 모듈이 제공합니다. 그래서 python2 에서 <code class="docutils literal"><span class="pre">urllib.request</span></code> import를 시도하고
+<code class="docutils literal"><span class="pre">ImportError</span></code> 를 만나면 python 에게 <code class="docutils literal"><span class="pre">urllib2</span></code> 를 대신 import하라고 하는 것입니다.</p>
+<p>마지막으로 여러분은 <code class="docutils literal"><span class="pre">as</span></code> 키워드에 대해서 알아야 합니다.
+이것은 import 된 모듈을 <code class="docutils literal"><span class="pre">urllib_request</span></code> 로 mapping 을 합니다.
+그래서 이제 <code class="docutils literal"><span class="pre">urllib2</span></code> 의 모든 클래스와 메서드는 <code class="docutils literal"><span class="pre">urllib_request</span></code> 를 통해
+이용할 수 있습니다.</p>
+<p><strong>구식의 python2 builtins</strong></p>
+<p>기억해야 할 또다른 것은 python3 에서 삭제된 12개의 python2 builtin 입니다.
+여러분은 python3 와의 호환되는 코드를 만들기 위해서는 python2 에서
+해당 builtin 을 사용하면 안됩니다. 여러분이 12개의 python2 builtin을
+사용하지 않도록 강제화 하는 방법이 있습니다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">future.builtins.disabled</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>이제 여러분이 python3 에서 제거된 모듈을 사용하려고 시도하면,
+python은 아래와 같이 NameError 를 발생시킬 것입니다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">future.builtins.disabled</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="nb">apply</span><span class="p">()</span>
+<span class="c"># Output: NameError: obsolete Python 2 builtin apply is disabled</span>
+</pre></div>
+</div>
+<p><strong>External standard-library backports</strong></p>
+<p>python2 에서 python3 의 기능을 제공하는 몇개의 package들이 있습니다.
+예를 들면 아래와 같습니다.</p>
+<ul class="simple">
+<li>enum <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">enum34</span></code></li>
+<li>singledispatch <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">singledispatch</span></code></li>
+<li>pathlib <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pathlib</span></code></li>
+</ul>
+<p>더 읽을거리를 제공하자면, python 문서 <a class="reference external" href="https://docs.python.org/3/howto/pyporting.html">comprehensive guide</a> 여러분의 코드가
+python2, python3 와 호환되도록 작성하기 위해 꼭 읽어봐야 하는 문서입니다.</p>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="coroutines.html" class="btn btn-neutral float-right" title="Coroutines">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="open_function.html" class="btn btn-neutral" title="Open function"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Muhammad Yasoob Ullah Khalid.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

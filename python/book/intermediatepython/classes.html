@@ -1,0 +1,489 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Classes &mdash; Python Tips 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Python Tips 0.1 documentation" href="index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> Python Tips</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="args_and_kwargs.html">*args and **kwargs 변수</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#args">*args 의 사용법</a></li>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#kwargs">**kwargs 사용법</a></li>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#id1">*args and **kwargs 변수를 사용해서 함수 호출하기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#id2">언제 이것들을 사용하나요?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">디버깅</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generators.html">Generators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#iterable">Iterable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#iterator">Iterator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#iteration">Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#id1">Generators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="map_&amp;_filter.html">Map &amp; Filter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="map_&amp;_filter.html#map">1. Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map_&amp;_filter.html#filter">2. Filter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="set_-_data_structure.html"><code class="docutils literal"><span class="pre">set</span></code> Data Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ternary_operators.html">Ternary Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorators.html">Decorators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#everything-in-python-is-an-object">Everything in python is an object:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#defining-functions-within-functions">Defining functions within functions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#returning-functions-from-within-functions">Returning functions from within functions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#giving-a-function-as-an-argument-to-another-function">Giving a function as an argument to another function:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#writing-your-first-decorator">Writing your first decorator:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#authorization">1. Authorization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#logging">2. Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="global_&amp;_return.html">Global &amp; Return</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mutation.html">Mutation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="__slots__magic.html">__slots__ Magic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="virtual_environment.html">가상 환경</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collections.html">Collections</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#defaultdict">1.<code class="docutils literal"><span class="pre">defaultdict</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#counter">2.<code class="docutils literal"><span class="pre">counter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#deque">3.<code class="docutils literal"><span class="pre">deque</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#namedtuple">4.<code class="docutils literal"><span class="pre">namedtuple</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="enumerate.html">Enumerate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_introspection.html">Object introspection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_introspection.html#dir">1.<code class="docutils literal"><span class="pre">dir</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_introspection.html#type-and-id">2.<code class="docutils literal"><span class="pre">type</span></code> and <code class="docutils literal"><span class="pre">id</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_introspection.html#inspect-module">3.<code class="docutils literal"><span class="pre">inspect</span></code> module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="comprehensions.html">Comprehensions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comprehensions.html#list-comprehensions"><code class="docutils literal"><span class="pre">list</span></code> comprehensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comprehensions.html#dict-comprehensions"><code class="docutils literal"><span class="pre">dict</span></code> comprehensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comprehensions.html#set-comprehensions"><code class="docutils literal"><span class="pre">set</span></code> comprehensions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#handling-multiple-exceptions">Handling multiple exceptions:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lambdas.html">Lambdas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_liners.html">One Liners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="for_-_else.html">For - Else</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="for_-_else.html#else-clause">1.<code class="docutils literal"><span class="pre">else</span></code> clause:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="open_function.html">Open function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="targeting_python_2_3.html">Targeting Python 2+3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coroutines.html">Coroutines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="function_caching.html">Function caching</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="function_caching.html#python-3-2">Python 3.2+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function_caching.html#python-2">Python 2+</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="context_managers.html">Context managers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="context_managers.html#implementing-context-manager-as-a-class">Implementing Context Manager as a Class:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="context_managers.html#handling-exceptions">Handling exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="context_managers.html#implementing-a-context-manager-as-a-generator">Implementing a Context Manager as a Generator</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Python Tips</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Classes</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/classes.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="classes">
+<h1>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h1>
+<p>Classes are the core of Python. They give us a lot of power but it is
+really easy to misuse this power. In this section I will share some
+obscure tricks and caveats related to <code class="docutils literal"><span class="pre">classes</span></code> in Python. Let&#8217;s get
+going!</p>
+<p>Class 는 Python의 핵심이다. 클래스는 막강한 힘을 가져다 주기도하지만,
+잘못 사용하기도 매우 쉽다. 이번 장에서는 몇가지 <code class="docutils literal"><span class="pre">classes</span></code> 와 관련된
+애매모호한 트릭과 주의사항에 대해서 공유하고자 한다.
+시작해보자.</p>
+<div class="section" id="instance-class-variables">
+<h2>1. Instance &amp; Class variables<a class="headerlink" href="#instance-class-variables" title="Permalink to this headline">¶</a></h2>
+<p>Most beginners and even some advanced Python programmers do not
+understand the distinction between instance and class variables. Their
+lack of understanding forces them to use these different types of
+variables incorrectly. Let&#8217;s understand them.</p>
+<p>대부분의 초심자 그리고 심지어 몇몇 고급 python programmer 들도
+instance 와 class 변수의 차이를 이해하지 못한다. 그들의 이해부족은
+우리로 하여금 이러한 변수의 차이점을 잘못 사용하도록 한다.
+이들을 이해해보자.</p>
+<p>The basic difference is:</p>
+<p>기본적인 차이는 아래와 같다.</p>
+<ul class="simple">
+<li>Instance variables are for data which is unique to every object</li>
+<li>Class variables are for data shared between different instances of a
+class</li>
+<li>instance 변수는 모든 객체에서 유일한 어떤 data를 위해 존재한다.</li>
+<li>클래스 변수는 클래스의 서로다른 instance 사이에 data를 공유하기 위해 존재한다.</li>
+</ul>
+<p>Let&#8217;s take a look at an example:</p>
+<p>아래 예제를 살펴보자.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Cal</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="c"># pi is a class variable</span>
+    <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.142</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+        <span class="c"># self.radius is an instance variable</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span>
+
+    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">Cal</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">area</span><span class="p">()</span>
+<span class="c"># Output: 3217.408</span>
+<span class="n">a</span><span class="o">.</span><span class="n">pi</span>
+<span class="c"># Output: 3.142</span>
+<span class="n">a</span><span class="o">.</span><span class="n">pi</span> <span class="o">=</span> <span class="mi">43</span>
+<span class="n">a</span><span class="o">.</span><span class="n">pi</span>
+<span class="c"># Output: 43</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">Cal</span><span class="p">(</span><span class="mi">44</span><span class="p">)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">area</span><span class="p">()</span>
+<span class="c"># Output: 6082.912</span>
+<span class="n">b</span><span class="o">.</span><span class="n">pi</span>
+<span class="c"># Output: 3.142</span>
+<span class="n">b</span><span class="o">.</span><span class="n">pi</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">b</span><span class="o">.</span><span class="n">pi</span>
+<span class="c"># Output: 50</span>
+</pre></div>
+</div>
+<p>There are not many issues while using mutable class variables. This is
+the major reason due to which beginners do not try to learn more about
+this subject because everything works! If you also believe that instance
+and class variables can not cause any problem if used incorrectly then
+check the next example.</p>
+<p>변경 가능한 클래스 변수를 사용하는데에 별다른 이슈는 없다.
+모든것이 잘 동작하는 것이  초심자가 이 주제에 대해서 더 배우려고 하지 않는
+않는 주된 이유이다. 만약 당신 또한 instance 와 클래스 변수를 제대로 사용하지 않았음에도
+아무런 문제가 없다고 믿는다면, 다음의 예제를 확인해 보자.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">SuperClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">superpowers</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">add_superpower</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">power</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">superpowers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">power</span><span class="p">)</span>
+
+<span class="n">foo</span> <span class="o">=</span> <span class="n">SuperClass</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">)</span>
+<span class="n">bar</span> <span class="o">=</span> <span class="n">SuperClass</span><span class="p">(</span><span class="s">&#39;bar&#39;</span><span class="p">)</span>
+<span class="n">foo</span><span class="o">.</span><span class="n">name</span>
+<span class="c"># Output: &#39;foo&#39;</span>
+
+<span class="n">bar</span><span class="o">.</span><span class="n">name</span>
+<span class="c"># Output: &#39;bar&#39;</span>
+
+<span class="n">foo</span><span class="o">.</span><span class="n">add_superpower</span><span class="p">(</span><span class="s">&#39;fly&#39;</span><span class="p">)</span>
+<span class="n">bar</span><span class="o">.</span><span class="n">superpowers</span>
+<span class="c"># Output: [&#39;fly&#39;]</span>
+
+<span class="n">foo</span><span class="o">.</span><span class="n">superpowers</span>
+<span class="c"># Output: [&#39;fly&#39;]</span>
+</pre></div>
+</div>
+<p>That is the beauty of the wrong usage of mutable class variables. To
+make your code safe against this kind of surprise attacks then make sure
+that you do not use mutable class variables. You may use them only if
+you know what you are doing.</p>
+<p>변경가능한 클래스 변수의 잘못된 사용을 보여주는 훌륭한 예제이다.
+예상치 못한 종류의 공격에 대해서 안전한 코드를 만들기 위해
+변경가능한 클래스 변수를 사용하지 말것을 확신해라.
+당신은 클래스 변수가 어떻게 동작하는지 명확하게 안다면,
+그때 이것을 사용하는 것을 좋을 것이다.</p>
+</div>
+<div class="section" id="new-style-classes">
+<h2>2. New style classes<a class="headerlink" href="#new-style-classes" title="Permalink to this headline">¶</a></h2>
+<p>New style classes were introduced in Python 2.1 but a lot of people do
+not know about them even now! It is so because Python also supports old
+style classes just to maintain backward compatibility. I have said a lot
+about new and old but I have not told you about the difference. Well the
+major difference is that:</p>
+<p>새로운 스타일의 클래스가 python 2.1 에서 소개되었다. 그러나 많은 사람들은
+이것에 대해서 알지못한다. 지금까지도...
+python은 단지 하위 호환성을 유지하기 위해 옛날 스타일의 클래스를 지원하고 있다.
+나는 새로운것과 이전방식에 대해서 쭉 얘기했지만, 나는 그 차이점에 대해서는
+말한적이 없다. 음.. 주된 차이점은 아래와 같다.</p>
+<ul class="simple">
+<li>Old base classes do not inherit from anything</li>
+<li>New style base classes inherit from <code class="docutils literal"><span class="pre">object</span></code></li>
+<li>옛날 방식의 클래스는 그 어떤것도 상속받을 수 없다.</li>
+<li>새로운 방식의 클래스는 <code class="docutils literal"><span class="pre">object</span></code> 로부터 상속받는다.</li>
+</ul>
+<p>A very basic example is:</p>
+<p>가장 간단한 예는 아래와 같다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">OldClass</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39;I am an old class&#39;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">NewClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39;I am a jazzy new class&#39;</span><span class="p">)</span>
+
+<span class="n">old</span> <span class="o">=</span> <span class="n">OldClass</span><span class="p">()</span>
+<span class="c"># Output: I am an old class</span>
+
+<span class="n">new</span> <span class="o">=</span> <span class="n">NewClass</span><span class="p">()</span>
+<span class="c"># Output: I am a jazzy new class</span>
+</pre></div>
+</div>
+<p>This inheritance from <code class="docutils literal"><span class="pre">object</span></code> allows new style classes to utilize
+some <em>magic</em>. A major advantage is that you can employ some useful
+optimizations like <code class="docutils literal"><span class="pre">__slots__</span></code>. You can use <code class="docutils literal"><span class="pre">super()</span></code> and
+descriptors and the likes. Bottom line? Always try to use new-style
+classes.</p>
+<p><code class="docutils literal"><span class="pre">object</span></code> 로부터의 상속은 새로운 스타일의 클래스가 <em>magic</em> 을 활용할 수
+있도록 한다. 중요한 장점은 당신이 <code class="docutils literal"><span class="pre">__slot__</span></code> 과 같은 유용한 최적화를
+사용할 수 있다는 점이다. 당신은 <code class="docutils literal"><span class="pre">super()</span></code> 를 사용할 수 있고,
+descriptor 와 the likes 를 사용할 수 있다. bottom line ??? 이건 모냐
+항상 새로운 형식의 클래스를 사용하도록 하자.</p>
+<p><strong>Note:</strong> Python 3 only has new-style classes. It does not matter
+whether you subclass from <code class="docutils literal"><span class="pre">object</span></code> or not. However it is recommended
+that you still subclass from <code class="docutils literal"><span class="pre">object</span></code>.</p>
+<p><strong>Note:</strong> python3 은 새로운 형식의 클래스만 존재한다.
+당신이 <code class="docutils literal"><span class="pre">object</span></code> 로부터 상속받은 클래스를 만들던 말던 상관 없다.
+그러나 당신이 <code class="docutils literal"><span class="pre">object</span></code> 로부터 상속받은 클래스는 만들도록 권유한다.</p>
+</div>
+<div class="section" id="magic-methods">
+<h2>3. Magic Methods<a class="headerlink" href="#magic-methods" title="Permalink to this headline">¶</a></h2>
+<p>Python&#8217;s classes are famous for their magic methods, commonly called
+<strong>dunder</strong> (double underscore) methods. I am going to discuss a few of
+them.</p>
+<p>python의 클래스는 magic method 가 잘 알려져 있다. 일반적으로
+<strong>dunder</strong> (double underscore) method 라고 불리운다.
+이제 이들 중 몇가지에 대해서 논의해보고자 한다.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">__init__</span></code></li>
+</ul>
+<p>It is a class initializer. Whenever an instance of a class is created
+its <code class="docutils literal"><span class="pre">__init__</span></code> method is called. For example:</p>
+<p>이것은 클래스 초기화 method다. 클래스의 객체가 생성될 때마다
+클래스의 <code class="docutils literal"><span class="pre">__init__</span></code> method 가 호출된다. 예를 들어보자.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">GetTest</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39;Greetings!!&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">another_method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39;I am another method which is not&#39;</span>
+              <span class="s">&#39; automatically called&#39;</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">GetTest</span><span class="p">()</span>
+<span class="c"># Output: Greetings!!</span>
+
+<span class="n">a</span><span class="o">.</span><span class="n">another_method</span><span class="p">()</span>
+<span class="c"># Output: I am another method which is not automatically</span>
+<span class="c"># called</span>
+</pre></div>
+</div>
+<p>You can see that <code class="docutils literal"><span class="pre">__init__</span></code> is called immediately after an instance is
+created. You can also pass arguments to the class during it&#8217;s
+initialization. Like this:</p>
+<p>위에서 객체가 생성된 직후 <code class="docutils literal"><span class="pre">__init__</span></code> method 가 호출되는 것을 볼 수 있다.
+아래와 같이 초기화 method 에 인자를 넘길 수 있다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre>class GetTest(object):
+    def __init__(self, name):
+        print(&#39;Greetings!! {0}&#39;.format(name))
+    def another_method(self):
+        print(&#39;I am another method which is not&#39;
+              &#39; automatically called&#39;)
+
+a = GetTest(&#39;yasoob&#39;)
+# Output: Greetings!! yasoob
+
+# Try creating an instance without the name arguments
+b = GetTest()
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+TypeError: __init__() takes exactly 2 arguments (1 given)
+</pre></div>
+</div>
+<p>I am sure that now you understand the <code class="docutils literal"><span class="pre">__init__</span></code> method.</p>
+<p>이제 <code class="docutils literal"><span class="pre">__init__</span></code> method 에 대해서 이해했을 것이라 확신한다.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">__getitem__</span></code></li>
+</ul>
+<p>Implementing <strong>getitem</strong> in a class allows its instances to use the []
+(indexer) operator. Here is an example:</p>
+<p>클래스의 <strong>getitem</strong> 의 구현은 객체가 [](indexer) operator 를 사용할 수 있도록
+한다. 아래는 예제이다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">GetTest</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">&#39;name&#39;</span><span class="p">:</span><span class="s">&#39;Yasoob&#39;</span><span class="p">,</span>
+            <span class="s">&#39;country&#39;</span><span class="p">:</span><span class="s">&#39;Pakistan&#39;</span><span class="p">,</span>
+            <span class="s">&#39;number&#39;</span><span class="p">:</span><span class="mi">12345812</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="n">foo</span> <span class="o">=</span> <span class="n">OldClass</span><span class="p">()</span>
+<span class="n">foo</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">]</span>
+<span class="c"># Output: &#39;Yasoob&#39;</span>
+
+<span class="n">foo</span><span class="p">[</span><span class="s">&#39;number&#39;</span><span class="p">]</span>
+<span class="c"># Output: 36845124</span>
+</pre></div>
+</div>
+<p>Without the <code class="docutils literal"><span class="pre">__getitem__</span></code> method we would have got this error:</p>
+<p><code class="docutils literal"><span class="pre">__getitem__</span></code> method 가 없다면 우리는 아래와 같은 에러를 직면하게 될 것이다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">foo</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">]</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">&#39;GetTest&#39; object has no attribute &#39;__getitem__&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="static-class-abstract-methods">
+<h2>Static, Class &amp; Abstract methods<a class="headerlink" href="#static-class-abstract-methods" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Muhammad Yasoob Ullah Khalid.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

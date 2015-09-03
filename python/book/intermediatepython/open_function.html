@@ -1,0 +1,343 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Open function &mdash; Python Tips 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Python Tips 0.1 documentation" href="index.html"/>
+        <link rel="next" title="Targeting Python 2+3" href="targeting_python_2_3.html"/>
+        <link rel="prev" title="For - Else" href="for_-_else.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> Python Tips</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="args_and_kwargs.html">*args and **kwargs 변수</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#args">*args 의 사용법</a></li>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#kwargs">**kwargs 사용법</a></li>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#id1">*args and **kwargs 변수를 사용해서 함수 호출하기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#id2">언제 이것들을 사용하나요?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">디버깅</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generators.html">Generators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#iterable">Iterable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#iterator">Iterator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#iteration">Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#id1">Generators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="map_&amp;_filter.html">Map &amp; Filter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="map_&amp;_filter.html#map">1. Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map_&amp;_filter.html#filter">2. Filter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="set_-_data_structure.html"><code class="docutils literal"><span class="pre">set</span></code> Data Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ternary_operators.html">Ternary Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorators.html">Decorators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#everything-in-python-is-an-object">Everything in python is an object:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#defining-functions-within-functions">Defining functions within functions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#returning-functions-from-within-functions">Returning functions from within functions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#giving-a-function-as-an-argument-to-another-function">Giving a function as an argument to another function:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#writing-your-first-decorator">Writing your first decorator:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#authorization">1. Authorization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#logging">2. Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="global_&amp;_return.html">Global &amp; Return</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mutation.html">Mutation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="__slots__magic.html">__slots__ Magic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="virtual_environment.html">가상 환경</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collections.html">Collections</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#defaultdict">1.<code class="docutils literal"><span class="pre">defaultdict</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#counter">2.<code class="docutils literal"><span class="pre">counter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#deque">3.<code class="docutils literal"><span class="pre">deque</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#namedtuple">4.<code class="docutils literal"><span class="pre">namedtuple</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="enumerate.html">Enumerate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_introspection.html">Object introspection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_introspection.html#dir">1.<code class="docutils literal"><span class="pre">dir</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_introspection.html#type-and-id">2.<code class="docutils literal"><span class="pre">type</span></code> and <code class="docutils literal"><span class="pre">id</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_introspection.html#inspect-module">3.<code class="docutils literal"><span class="pre">inspect</span></code> module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="comprehensions.html">Comprehensions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comprehensions.html#list-comprehensions"><code class="docutils literal"><span class="pre">list</span></code> comprehensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comprehensions.html#dict-comprehensions"><code class="docutils literal"><span class="pre">dict</span></code> comprehensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comprehensions.html#set-comprehensions"><code class="docutils literal"><span class="pre">set</span></code> comprehensions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#handling-multiple-exceptions">Handling multiple exceptions:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lambdas.html">Lambdas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_liners.html">One Liners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="for_-_else.html">For - Else</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="for_-_else.html#else-clause">1.<code class="docutils literal"><span class="pre">else</span></code> clause:</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Open function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="targeting_python_2_3.html">Targeting Python 2+3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coroutines.html">Coroutines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="function_caching.html">Function caching</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="function_caching.html#python-3-2">Python 3.2+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function_caching.html#python-2">Python 2+</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="context_managers.html">Context managers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="context_managers.html#implementing-context-manager-as-a-class">Implementing Context Manager as a Class:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="context_managers.html#handling-exceptions">Handling exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="context_managers.html#implementing-a-context-manager-as-a-generator">Implementing a Context Manager as a Generator</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Python Tips</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Open function</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/open_function.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="open-function">
+<h1>Open function<a class="headerlink" href="#open-function" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://docs.python.org/dev/library/functions.html#open">open</a> 함수는 file을
+open 합니다. 꽤 간단합니다 그죠? 대부분 우리는 아래와 같이 사용한다고 알고 있습니다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;photo.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;r+&#39;</span><span class="p">)</span>
+<span class="n">jpgdata</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>제가 이번 article 을 작성하게 된 이유는 대부분 open 함수가 이렇게
+사용되는 것을 봤기 때문입니다. 위 코드에는 <strong>3가지</strong> error가 있습니다.
+여러분은 3가지 모두 찾을 수 있습니까? 만약 그렇지 않다면 계속 읽어주세요.
+이 article 의 마지막에서 위 코드의 잘못된 점을 알게될 것입니다.
+그리고 더 중요한것은 여러분의 코드에서 이러한 실수를 하지 않게 될 것이라는 점입니다.
+기본적인 것부터 시작해 봅시다.</p>
+<p>open 함수는 os 로부터 python app 에게 주어진 file handle 을 return 합니다.
+여러분은 file에 대한 작업이 일단 끝나면 file handle을 return 할 것입니다.
+만약 여러분의 app 이 file handle 의 상한에 접근하지 않는다면
+file handle을 가질 수 있습니다.</p>
+<p>명시적으로 <code class="docutils literal"><span class="pre">close</span></code> 를 호출하여 file handle 을 close 합니다.
+그러나 read 가 성공적일 때에 한해서 그렇습니다.
+만약 <code class="docutils literal"><span class="pre">f=open(...)</span></code> 이후에 에러가 발생한다면, <code class="docutils literal"><span class="pre">f.close()</span></code> 는 호출될 수
+없을 것입니다.( python interpreter 에 의존하여, file handle 은 return 이
+될 것이다. 그러나 그건 별개의 얘기다). exception 이 발생하든 안하든
+file이 closed 되도록 확신하기 위해서는 코드를 <code class="docutils literal"><span class="pre">with</span></code> 구문 안에 위치시켜야 합니다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;photo.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;r+&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">jpgdata</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">open</span></code> 의 첫번째 인자는 파일 이름입니다.
+2번째 인자(<em>mode</em>)는 파일을 <em>어떻게</em> open 할 것 인지를 결정합니다.</p>
+<ul class="simple">
+<li>파일을 읽기만 한다면 <code class="docutils literal"><span class="pre">r</span></code></li>
+<li>파일을 읽고, 쓰고싶다면 <code class="docutils literal"><span class="pre">r+</span></code></li>
+<li>파일을 덮어쓰고 싶다면 <code class="docutils literal"><span class="pre">w</span></code></li>
+<li>파일에 덧붙이고 싶다면 <code class="docutils literal"><span class="pre">a</span></code></li>
+</ul>
+<p>이외에도 몇 가지 더 유효한 mode string 이 있지만, 여러분이 그것을 사용할 기회는
+거의 없습니다. mode 는 중요합니다. 왜냐면 mode에 따라 file 을 다루는 동작이
+바뀔 뿐만 아니라 mode에 따라 file permission error 가 발생할 수도 있기 때문입니다.
+예를 들면, 만약 우리가 쓰기금지된 폴더에서 jpg-file 을 open <code class="docutils literal"><span class="pre">open(..,</span> <span class="pre">'r+')</span></code> 한다면
+결과는 fail 입니다. mode 는 추가의 character를 포함할 수 있습니다.
+우리는 binary file을 open 할 수 있습니다(여러분은 bytes 문자열을 보게될 것입니다)
+또는 text mode 로도 open 할 수 있습니다(character string 형태로 보게 됩니다)</p>
+<p>일반적으로 사람에 의해 쓰여진 포맷이라면, 해당 파일은 text mode 일 것입니다.
+<code class="docutils literal"><span class="pre">jpg</span></code> 이미지 파일은 보통 사람에 의해 작성된 파일이 아닙니다
+(그리고 정말로 사람은 읽을 수 없습니다.) 그래서 여러분은 jpg 파일은
+<code class="docutils literal"><span class="pre">b</span></code> 를 text string 에 붙여서 binary mode 로 open 해야 합니다.
+(만약 여러분이 opening 예제를 따라했다면, 제대로 된 입력은 <code class="docutils literal"><span class="pre">rb</span></code> 가 될 것입니다)
+만약 여러분이 text mode 로 open 했다면(ex. <code class="docutils literal"><span class="pre">t</span></code> 를 붙이거나
+<code class="docutils literal"><span class="pre">r/r+/w/a</span></code> 를 제외하면 아무것도 없거나) 여러분은 또한 컴퓨터가 어떤 encoding을
+사용했는지 반드시 알아야 합니다. 모든 파일은 just bytes 입니다. 문자열이 아닙니다.</p>
+<p>운이 나쁘게도 python2 에서 <code class="docutils literal"><span class="pre">open</span></code> 은 명시적인 encoding 을 지정할 수 없습니다.
+하지만 <a class="reference external" href="http://docs.python.org/2/library/io.html#io.open">io.open</a>  함수는
+python2,3 에서 모두 사용가능하고(<code class="docutils literal"><span class="pre">open</span></code> 의 alias 일 경우에),
+올바른 방법입니다. 여러분은 <code class="docutils literal"><span class="pre">encoding</span></code> 키워드와 함께 encoding 을
+전달할 수 있습니다. 만약 아무 encoding 도 전달하지 않았다면,
+system (그리고 python) 의 default encoding 이 선택되어질 것입니다.
+여러분은 아마도 이러한 default encoding 에 의존하고 싶을지도 모릅니다.
+하지만 default 값은 꽤 잘못된 경우가 많고 또한 default encoding 은
+사실 모든 문자열을 표현하지 못합니다.(이러한 현상은 python2.x 또는
+windows에서 발생합니다). 그래서 진행할 때 encoding 을 지정합시다.
+<code class="docutils literal"><span class="pre">utf-8</span></code> 이 최고입니다. 여러분이 파일을 write 할때, 여러분은
+여러분의 기호에 따라 encoding을 지정할 수 있습니다.( 또는 프로그램이
+선호하는 encoding, 이것은 결국 file을 읽을 수 있는 encoding ).</p>
+<p>여러분은 여러분이 read 한 file 이 어떤 encoding 인지 어떻게 알 수 있을까요?
+음.. 운이 나쁘게도 encoding 을 알아낼 수 있는 방법은 없습니다. - bytes 는 같지만,
+다르게 표현될 수 있습니다. 그러나 다른 encoding 환경에서 문자열은 완전히
+같습니다.(원문: there is no foolproof way to detect the encoding - the
+same bytes can represent different, but equally valid characters in
+different encodings) 그래서 여러분은 encoding 값을 알기 위해서는 metadata 에 의존해야 합니다.
+(예를 들면 HTTP 헤더). 점점 더 format은 encoding 을 UTF-8 으로 지정하는 추세입니다.</p>
+<p>Armed with this knowledge, let&#8217;s write a program that reads a file,
+determines whether it&#8217;s JPG (hint: These files start with the bytes
+<code class="docutils literal"><span class="pre">FF</span> <span class="pre">D8</span></code>), and writes a text file that describe the input file.</p>
+<p>이러한 지식으로 무장한채로, file 을 읽는 프로그램을 작성해봅시다.
+JPG 라고 가정합니다.(힌트: 이 형식의 파일은 <code class="docutils literal"><span class="pre">FF</span> <span class="pre">D8</span></code> 으로 시작합니다)
+그리고 input file 을 설명하는 text file을 작성합니다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">io</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;photo.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">inf</span><span class="p">:</span>
+    <span class="n">jpgdata</span> <span class="o">=</span> <span class="n">inf</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">jpgdata</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">b</span><span class="s">&#39;</span><span class="se">\xff\xd8</span><span class="s">&#39;</span><span class="p">):</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s">u&#39;This is a jpeg file (</span><span class="si">%d</span><span class="s"> bytes long)</span><span class="se">\n</span><span class="s">&#39;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s">u&#39;This is a random file (</span><span class="si">%d</span><span class="s"> bytes long)</span><span class="se">\n</span><span class="s">&#39;</span>
+
+<span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;summary.txt&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outf</span><span class="p">:</span>
+    <span class="n">outf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">text</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">jpgdata</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>저는 이제 여러분이 <code class="docutils literal"><span class="pre">open</span></code> 함수를 제대로 사용할 수 있다고 확신합니다!</p>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="targeting_python_2_3.html" class="btn btn-neutral float-right" title="Targeting Python 2+3">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="for_-_else.html" class="btn btn-neutral" title="For - Else"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Muhammad Yasoob Ullah Khalid.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

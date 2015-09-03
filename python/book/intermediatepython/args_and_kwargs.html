@@ -1,0 +1,360 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>*args and **kwargs 변수 &mdash; Python Tips 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Python Tips 0.1 documentation" href="index.html"/>
+        <link rel="next" title="디버깅" href="debugging.html"/>
+        <link rel="prev" title="Intermediate Python" href="index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> Python Tips</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">*args and **kwargs 변수</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#args">*args 의 사용법</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kwargs">**kwargs 사용법</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">*args and **kwargs 변수를 사용해서 함수 호출하기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">언제 이것들을 사용하나요?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">디버깅</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generators.html">Generators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#iterable">Iterable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#iterator">Iterator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#iteration">Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#id1">Generators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="map_&amp;_filter.html">Map &amp; Filter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="map_&amp;_filter.html#map">1. Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map_&amp;_filter.html#filter">2. Filter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="set_-_data_structure.html"><code class="docutils literal"><span class="pre">set</span></code> Data Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ternary_operators.html">Ternary Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorators.html">Decorators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#everything-in-python-is-an-object">Everything in python is an object:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#defining-functions-within-functions">Defining functions within functions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#returning-functions-from-within-functions">Returning functions from within functions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#giving-a-function-as-an-argument-to-another-function">Giving a function as an argument to another function:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#writing-your-first-decorator">Writing your first decorator:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#authorization">1. Authorization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#logging">2. Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="global_&amp;_return.html">Global &amp; Return</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mutation.html">Mutation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="__slots__magic.html">__slots__ Magic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="virtual_environment.html">가상 환경</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collections.html">Collections</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#defaultdict">1.<code class="docutils literal"><span class="pre">defaultdict</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#counter">2.<code class="docutils literal"><span class="pre">counter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#deque">3.<code class="docutils literal"><span class="pre">deque</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#namedtuple">4.<code class="docutils literal"><span class="pre">namedtuple</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="enumerate.html">Enumerate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_introspection.html">Object introspection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_introspection.html#dir">1.<code class="docutils literal"><span class="pre">dir</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_introspection.html#type-and-id">2.<code class="docutils literal"><span class="pre">type</span></code> and <code class="docutils literal"><span class="pre">id</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_introspection.html#inspect-module">3.<code class="docutils literal"><span class="pre">inspect</span></code> module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="comprehensions.html">Comprehensions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comprehensions.html#list-comprehensions"><code class="docutils literal"><span class="pre">list</span></code> comprehensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comprehensions.html#dict-comprehensions"><code class="docutils literal"><span class="pre">dict</span></code> comprehensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comprehensions.html#set-comprehensions"><code class="docutils literal"><span class="pre">set</span></code> comprehensions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#handling-multiple-exceptions">Handling multiple exceptions:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lambdas.html">Lambdas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_liners.html">One Liners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="for_-_else.html">For - Else</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="for_-_else.html#else-clause">1.<code class="docutils literal"><span class="pre">else</span></code> clause:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="open_function.html">Open function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="targeting_python_2_3.html">Targeting Python 2+3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coroutines.html">Coroutines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="function_caching.html">Function caching</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="function_caching.html#python-3-2">Python 3.2+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function_caching.html#python-2">Python 2+</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="context_managers.html">Context managers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="context_managers.html#implementing-context-manager-as-a-class">Implementing Context Manager as a Class:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="context_managers.html#handling-exceptions">Handling exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="context_managers.html#implementing-a-context-manager-as-a-generator">Implementing a Context Manager as a Generator</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Python Tips</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>*args and **kwargs 변수</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/args_and_kwargs.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="args-and-kwargs">
+<h1>*args and **kwargs 변수<a class="headerlink" href="#args-and-kwargs" title="Permalink to this headline">¶</a></h1>
+<p>대부분의 python을 처음 접하는 프로그래머들이 *args 와 **kwargs 라는
+python 의 magic variables 에 대해서 이해하는데 어려움을 겪는것을 그동안 쭉 봐왔다.
+이 변수들은 과연 무엇일까?
+일단, 말해주고 싶은 부분은 반드시 꼭 *args 와 **kwargs 을 사용해야
+하는 것은 아니라는 것이다. <code class="docutils literal"><span class="pre">*</span></code> (asterisk) 만이 반드시 필요하다.
+다시 말하면 *args 와 **kwargs 라고 사용하지 않고 *var and **vars 라고
+사용할 수도 있다. *args and **kwargs 라고 적은것은 일종의 규약(convention)
+이다. 자 이제 *args 에 대해서 먼저 알아보자.</p>
+<div class="section" id="args">
+<h2>*args 의 사용법<a class="headerlink" href="#args" title="Permalink to this headline">¶</a></h2>
+<p>*args 와 **kwargs 는 대부분 함수를 정의할때 사용된다.
+*args 와 **kwargs 변수를 통해 함수에 많은 갯수의 인자를 전달할 수 있다.
+args, kwargs 변수들이 의미하는 것은 사용자가 몇개의 인자를
+함수로 전달 할 것 인지 미리 알수 없을 때, 이러한 경우에 *args, **kwargs변수를
+사용하면 된다는 것을 의미한다.
+여기서 *args 인자를 사용하여 <strong>non-keyworded</strong> list 를 함수로 전달하였다.
+정확한 이해를 돕기위해 아래의 예제를 살펴보자.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">test_var_args</span><span class="p">(</span><span class="n">f_arg</span><span class="p">,</span> <span class="o">*</span><span class="n">argv</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&quot;first normal arg:&quot;</span><span class="p">,</span> <span class="n">f_arg</span>
+    <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">argv</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&quot;another arg through *argv :&quot;</span><span class="p">,</span> <span class="n">arg</span>
+
+<span class="n">test_var_args</span><span class="p">(</span><span class="s">&#39;yasoob&#39;</span><span class="p">,</span><span class="s">&#39;python&#39;</span><span class="p">,</span><span class="s">&#39;eggs&#39;</span><span class="p">,</span><span class="s">&#39;test&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>이 코드는 아래의 결과를 만들어낸다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre>first normal arg: yasoob
+another arg through *argv : python
+another arg through *argv : eggs
+another arg through *argv : test
+</pre></div>
+</div>
+<p>앞선 설명에서 이해가 어렵고 혼란스러웠던 부분이 이번 예제를 통해 확실히 이해되길 바란다.
+이해가 될 것이라 생각한다. 다음으로 **kwargs 에 대해서 알아보자.</p>
+</div>
+<div class="section" id="kwargs">
+<h2>**kwargs 사용법<a class="headerlink" href="#kwargs" title="Permalink to this headline">¶</a></h2>
+<p>**kwargs 함수 인자는 <strong>keyworded</strong> 갯수 만큼의 인자를 함수로 전달하는데 사용된다.
+함수 내에서 <strong>named arguments</strong> 변수들을 처리하기 위해서는 **kwargs 변수를
+사용해야만 한다. 아래의 예제를 보자.</p>
+<div class="code python highlight-python"><div class="highlight"><pre>def greet_me(**kwargs):
+    if kwargs is not None:
+        for key, value in kwargs.iteritems():
+            print &quot;%s == %s&quot; %(key,value)
+
+&gt;&gt;&gt; greet_me(name=&quot;yasoob&quot;)
+name == yasoob
+</pre></div>
+</div>
+<p>위 예제를 보면, 함수내에서 keyworded argument list 를 어떻게 처리하는지
+알 수 있다. 이것은 **kwargs 변수를 사용하는 기본적인 방법이며,
+위 예제에서 **kwargs 변수가 얼마나 유용한지 알 수 있었다.
+자 이제 리스트 또는 사전형 변수를 인자로 해서 함수를 호출할때,
+*args 그리고 **kwargs 변수를 어떻게 사용하는지 알아보자.</p>
+</div>
+<div class="section" id="id1">
+<h2>*args and **kwargs 변수를 사용해서 함수 호출하기<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>이번에는 *args 와 **kwargs 변수를 이용하여 함수 호출하는 방법에 대해
+알아보겠다. 아래의 간단한 함수를 살펴보자.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">test_args_kwargs</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">arg3</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&quot;arg1:&quot;</span><span class="p">,</span> <span class="n">arg1</span>
+    <span class="k">print</span> <span class="s">&quot;arg2:&quot;</span><span class="p">,</span> <span class="n">arg2</span>
+    <span class="k">print</span> <span class="s">&quot;arg3:&quot;</span><span class="p">,</span> <span class="n">arg3</span>
+</pre></div>
+</div>
+<p>*args 와 **kwargs 를 이용하여 함수에 인자를 전달 할 수 있다.
+어떻게 하는지 아래의 python 코드를 보자.</p>
+<div class="code python highlight-python"><div class="highlight"><pre># first with *args
+&gt;&gt;&gt; args = (&quot;two&quot;, 3, 5)
+&gt;&gt;&gt; test_args_kwargs(*args)
+arg1: two
+arg2: 3
+arg3: 5
+
+# now with **kwargs:
+&gt;&gt;&gt; kwargs = {&quot;arg3&quot;:3, &quot;arg2&quot;:&quot;two&quot;, &quot;arg1&quot;:5}
+&gt;&gt;&gt; test_args_kwargs(**kwargs)
+arg1: 5
+arg2: two
+arg3: 3
+</pre></div>
+</div>
+<p><strong>*args **kwargs 변수 사용의 순서와 formal args</strong></p>
+<p>만약 3가지 타입의 인자를 모두 사용하고 싶다면, 아래와 같은 순서로 사용해야 한다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">some_func</span><span class="p">(</span><span class="n">fargs</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>언제 이것들을 사용하나요?<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>이 질문은 여러분의 요구사항에 전적으로 의존한다.
+대부분의 경우 함수 decorators(이것은 다른 chapter에서 논의 할 것이다)를 만들 때 사용한다.
+게다가 monkey patching 에도 사용되어진다.
+Monkey patching 은 runtime 에 code를 수정하는 것을 의미한다.
+<code class="docutils literal"><span class="pre">get_info</span></code> 라는 함수를 내장하는 class가 있다고 가정해보자.
+<code class="docutils literal"><span class="pre">get_info</span></code> 함수는 API를 호출하고 결과 data를 반환하는 함수다.
+만약 이 API를 test하고 싶다면, API call 하지 않고, test 값을 return 하면 된다.
+아래의 예제를 살펴보자</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">someclass</span>
+
+<span class="k">def</span> <span class="nf">get_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s">&quot;Test data&quot;</span>
+
+<span class="n">someclass</span><span class="o">.</span><span class="n">get_info</span> <span class="o">=</span> <span class="n">get_info</span> <span class="c"># change api at runtime</span>
+</pre></div>
+</div>
+<p>여러분 또한 다양한 use case를 생각할 수 있다고 확신합니다.</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="debugging.html" class="btn btn-neutral float-right" title="디버깅">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Intermediate Python"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Muhammad Yasoob Ullah Khalid.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,308 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>가상 환경 &mdash; Python Tips 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Python Tips 0.1 documentation" href="index.html"/>
+        <link rel="next" title="Collections" href="collections.html"/>
+        <link rel="prev" title="__slots__ Magic" href="__slots__magic.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> Python Tips</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="args_and_kwargs.html">*args and **kwargs 변수</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#args">*args 의 사용법</a></li>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#kwargs">**kwargs 사용법</a></li>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#id1">*args and **kwargs 변수를 사용해서 함수 호출하기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="args_and_kwargs.html#id2">언제 이것들을 사용하나요?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">디버깅</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generators.html">Generators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#iterable">Iterable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#iterator">Iterator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#iteration">Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html#id1">Generators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="map_&amp;_filter.html">Map &amp; Filter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="map_&amp;_filter.html#map">1. Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map_&amp;_filter.html#filter">2. Filter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="set_-_data_structure.html"><code class="docutils literal"><span class="pre">set</span></code> Data Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ternary_operators.html">Ternary Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorators.html">Decorators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#everything-in-python-is-an-object">Everything in python is an object:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#defining-functions-within-functions">Defining functions within functions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#returning-functions-from-within-functions">Returning functions from within functions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#giving-a-function-as-an-argument-to-another-function">Giving a function as an argument to another function:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#writing-your-first-decorator">Writing your first decorator:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#authorization">1. Authorization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#logging">2. Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="global_&amp;_return.html">Global &amp; Return</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mutation.html">Mutation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="__slots__magic.html">__slots__ Magic</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">가상 환경</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collections.html">Collections</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#defaultdict">1.<code class="docutils literal"><span class="pre">defaultdict</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#counter">2.<code class="docutils literal"><span class="pre">counter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#deque">3.<code class="docutils literal"><span class="pre">deque</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections.html#namedtuple">4.<code class="docutils literal"><span class="pre">namedtuple</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="enumerate.html">Enumerate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_introspection.html">Object introspection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_introspection.html#dir">1.<code class="docutils literal"><span class="pre">dir</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_introspection.html#type-and-id">2.<code class="docutils literal"><span class="pre">type</span></code> and <code class="docutils literal"><span class="pre">id</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_introspection.html#inspect-module">3.<code class="docutils literal"><span class="pre">inspect</span></code> module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="comprehensions.html">Comprehensions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comprehensions.html#list-comprehensions"><code class="docutils literal"><span class="pre">list</span></code> comprehensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comprehensions.html#dict-comprehensions"><code class="docutils literal"><span class="pre">dict</span></code> comprehensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comprehensions.html#set-comprehensions"><code class="docutils literal"><span class="pre">set</span></code> comprehensions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#handling-multiple-exceptions">Handling multiple exceptions:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lambdas.html">Lambdas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_liners.html">One Liners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="for_-_else.html">For - Else</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="for_-_else.html#else-clause">1.<code class="docutils literal"><span class="pre">else</span></code> clause:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="open_function.html">Open function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="targeting_python_2_3.html">Targeting Python 2+3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coroutines.html">Coroutines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="function_caching.html">Function caching</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="function_caching.html#python-3-2">Python 3.2+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function_caching.html#python-2">Python 2+</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="context_managers.html">Context managers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="context_managers.html#implementing-context-manager-as-a-class">Implementing Context Manager as a Class:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="context_managers.html#handling-exceptions">Handling exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="context_managers.html#implementing-a-context-manager-as-a-generator">Implementing a Context Manager as a Generator</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Python Tips</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>가상 환경</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/virtual_environment.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="id1">
+<h1>가상 환경<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal"><span class="pre">virtualenv</span></code> 에 대해서 들어본 적 있나요?
+만약 당신이 python 을 시작하는 사람이라면 당신은 들어본 적이 없을 겁니다.
+그러나, python 중급이상 개발자라면 <code class="docutils literal"><span class="pre">virtualenv</span></code> 는 여러분의 toolset 의 vital 부분입니다.
+자 그럼 <code class="docutils literal"><span class="pre">virtualenv</span></code> 는 정말 무엇일까요?
+<code class="docutils literal"><span class="pre">virtualenv</span></code> 는 독립된 python 환경을 만들어주는 도구입니다.
+여러분의 Application에서 LibraryBar 라는 python2 기반의 lib 가 필요하다고
+상상해보세요. 그런데 또다른 Application 에서는 version3 기반의 lib를 필요로 하는 상황입니다.
+당신은 이러한 application들을 어떻게 사용하고 개발하나요?</p>
+<p>만약 <code class="docutils literal"><span class="pre">/usr/lib/python2.7/site-packages</span></code> (또는 여러분 플랫폼의 표준 위치가 어디이든지간에)
+의 위치에 모든 것을 다 install 한다면, 업그레이드 하지 않아야 하는 package를
+의도치 않게 업그레이드 하는 상황에 쉽게 처할 수 있습니다.
+여러분은 완전히 개발된 application을 가지고 있다고 상상해보세요.
+그리고 여러분은 application이 사용한 lib의 어떤 변경도 원치 않는 상황입니다.
+하지만 동시에 여러분은 다른 Application을 개발하게 되었는데, 해당 어플리케이션은
+이 lib 의 업데이트를 필요로 합니다. 당신은 어떻게 하시겠습니까?
+이 때가 바로 <code class="docutils literal"><span class="pre">virtualenv</span></code> 가 필요한 때 입니다. 이는 여러분의 python 어플리케이션을 위한
+독립된 개발환경을 제공해주고, 여러분이 global영역이 아닌 독립된 환경에
+python lib 를 설치하도록 해줍니다.</p>
+<p><code class="docutils literal"><span class="pre">virtualenv</span></code> 의 설치를 위해 아래 명령어를 shell 에 입력해보세요.</p>
+<div class="code python highlight-python"><div class="highlight"><pre>$ pip install virtualenv
+</pre></div>
+</div>
+<p>자 이제, 관련 명령어 몇개를 나열해 볼건데요.
+가장 중요한 것은 아래 명령어들입니다.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">$</span> <span class="pre">virtualenv</span> <span class="pre">myproject</span></code></li>
+<li><code class="docutils literal"><span class="pre">$</span> <span class="pre">source</span> <span class="pre">bin/activate</span></code></li>
+</ul>
+<p>첫번째 명령어는 <code class="docutils literal"><span class="pre">myproject</span></code> 폴더 내에서 독립된 virtualenv 개발환경을 만들어 줍니다.
+그리고 두번째 명령어는 독립된 개발환경을 활성화해줍니다.
+첫번째 명령어가 실행되는 동안, 당신은 결정해야 합니다.</p>
+<p>virtualenv 가 system 영역의 <code class="docutils literal"><span class="pre">site-packages</span></code> 에서 패키지를 사용하기를 원하는지
+virtualenv의 site-packages 에 모든 것을 설치하고 사용하길 원하는지 결정해야 합니다.
+기본적으로는 virtualenv 는 global 영역의 <code class="docutils literal"><span class="pre">site-packages</span></code> 에 접근할 수 없습니다.
+만약 여러분의 <code class="docutils literal"><span class="pre">virtualenv</span></code> 가 system 의 <code class="docutils literal"><span class="pre">site-packages</span></code> 의 접근을 원한다면
+여러분의 virtualenv 를 생성할때 <code class="docutils literal"><span class="pre">--system-site-packages</span></code> 를 사용하여 교체하면 됩니다.
+아래는 명령어 입니다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre>$ virtualenv --system-site-packages mycoolproject
+</pre></div>
+</div>
+<p>여러분은 <code class="docutils literal"><span class="pre">env</span></code> 가 동작하지 않도록 할 수 있습니다.</p>
+<div class="code python highlight-python"><div class="highlight"><pre>$ deactivate
+</pre></div>
+</div>
+<p><strong>Bonus</strong></p>
+<p>여러분은 bash 와 zsh 에서 사용가능한 lib인 <code class="docutils literal"><span class="pre">smartcd</span></code> 을 사용할 수 있습니다. 그리고
+이는 여러분의 bash(또는 zsh) 환경에서 사용하던 cd를 대신합니다.
+이것은 여러분이 directories 를 변경할 때, <code class="docutils literal"><span class="pre">virtualenv</span></code> 를 활성화 그리고 비활성화
+하는데 정말 유용합니다. 나는 이를 꽤 사용해봤고 굉장히 좋아하는 기능입니다.
+다음의 링크에서 좀 더 자세한 내용을 확인할 수 있습니다.
+<a class="reference external" href="https://github.com/cxreg/smartcd">GitHub</a></p>
+<p>이것은 virtualenv의 짧은 소개입니다.
+이것에 대한 더 많은 내용들이 있습니다. 나는 아래의 사이트에서
+좀 더 공부해 볼 것을 추천합니다.
+<a class="reference external" href="http://docs.python-guide.org/en/latest/dev/virtualenvs/">this link.</a>
+이는 여러분이 virtualenv 에 대해서 가지고 있는 혼란스러움을 한방에 날려줄 것이다.</p>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="collections.html" class="btn btn-neutral float-right" title="Collections">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="__slots__magic.html" class="btn btn-neutral" title="__slots__ Magic"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Muhammad Yasoob Ullah Khalid.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
