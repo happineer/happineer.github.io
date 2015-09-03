@@ -1,0 +1,42 @@
+Lambdas
+-------
+
+Lambdas 는 한줄짜리 함수입니다. 다른 언어에서는 익명함수로 알려져 있습니다.
+프로그램에서 2번이상 사용하고 싶지 않은 함수일 경우에 아마도 lambdas 를 사용하고 싶을 것입니다.
+lambdas 는 평범한 일반적인 함수와 같고 동일하게 동작합니다.
+
+**Blueprint**
+
+.. code:: python
+
+    lambda argument: manipulate(argument)
+
+**Example**
+
+.. code:: python
+
+    add = lambda x, y: x + y
+
+    print(add(3, 5))
+    # Output: 8
+
+여기에 몇가지 유용한 lambdas 사용 사례가 있습니다. 그리고 실전에서 사용할 수 있는
+몇가지 방법이 있습니다.
+
+**List sorting**
+
+.. code:: python
+
+    a = [(1, 2), (4, 1), (9, 10), (13, -3)]
+    a.sort(key=lambda x: x[1])
+
+    print(a)
+    # Output: [(13, -3), (4, 1), (1, 2), (9, 10)]
+
+**Parallel sorting of lists**
+
+.. code:: python
+
+    data = zip(list1, list2)
+    data.sort()
+    list1, list2 = map(lambda t: list(t), zip(*data))

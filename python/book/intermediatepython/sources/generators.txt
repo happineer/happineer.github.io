@@ -1,0 +1,172 @@
+Generators
+----------
+
+먼저 iterator에 대해서 이해해보자. Wikipedia에 의하면 iterator는 programmer가
+list와 같은 container를 순회하게끔 해주는 일종의 object 라고 설명되어 있습니다.
+iterator 는 traversal을 수행하고 data element에 접근 하도록 허용하지만,
+iteration을 수행하진 않습니다. 여러분은 아마도 이 부분이 이해하는데 어려울 것입니다.
+그래서 아래 3가지 part 에 대해서 천천히 다시 설명하겠습니다.
+
+-  Iterable
+-  Iterator
+-  Iteration
+
+위 3개는 모두 서로서로 연관되어 있습니다.
+다음에서 3가지 모두 하나하나씩 검토해본 후, generator에 대해서도 이야기 하겠습니다.
+
+Iterable
+^^^^^^^^
+
+``iterable`` 은 python의 일종의 object입니다. 이것은 **iterator** 를 반환하는
+``__iter__`` 또는 ``__getitem__`` 함수를 포함하거나, index 인자로 받을 수 있습니다.
+(이러한 dunder method(underbar 가 2개인 method) 에 대해서는 앞 챕터에서 충분히 설명함)
+요약하면, ``iterable`` 은 우리에게 **iterator** 를 제공해주는 일종의
+object 입니다. 그럼, **iterator** 는 뭘까요?
+
+Iterator
+^^^^^^^^
+
+iterator는 ``next`` (python2) 또는 ``__next__`` method를 가지고 있는 일종의
+python object 입니다. iterator에 대한 설명은 이것이 끝입니다. 이것이 iterator 입니다.
+자 이제 **iteration** 에 대해서 이해해보자.
+
+Iteration
+^^^^^^^^^
+
+간단히 말해서 iteration이란 list와 같은 무언가에서 item 을 가져오는 일련의 절차를 뜻합니다.
+우리가 무언가를 loop over하기 위해서 loop를 사용할 때, 이것을 iteration 라고 합니다.
+이 과정 자체에 부여된 이름입니다.
+이제 이러한 기본적인 용어(iterable, iterator, iteration)에 대해서 이해를 했으니,
+다음으로 **generators** 에 대해서 알아봅시다.
+
+
+Generators
+^^^^^^^^^^
+
+Generators 는 iterators 이다. 하지만 iterator와 다른점은 
+iterate 할 모든 값을 memory에 저장하지 않기 때문에 즉시 iterate 할 수 있다는 점입니다.
+값을 생성한 후, 사용이 끝나면 값을 메모리상에서 날려버립니다. 
+여러분은 'for' loop을 이용하여 iterate 하거나, 그것들을 어떤 함수에 전달하거나,
+iterates 를 생성할때 generator를 사용합니다.
+대부분의 경우 ``generator`` 는 함수로 구현됩니다. 하지만 generator 함수는
+값을 ``return`` 하지 않습니다. 그 함수는 값을 ``yield`` 합니다.
+아래는 ``generator`` 함수의 예제입니다.
+
+.. code:: python
+
+    def generator_function():
+        for i in range(10):
+            yield i
+
+    for item in generator_function():
+        print(item)
+
+    # Output: 0
+    # 1
+    # 2
+    # 3
+    # 4
+    # 5
+    # 6
+    # 7
+    # 8
+    # 9
+
+사실 위 예제와 같은 경우에 ``generator`` 는 별로 유용하지 않습니다.
+``generaters`` 는 대량의 결과값을 계산하는데에 효율적이다. (특히, loop 자체를 포함한 계산)
+그리고, 이때 모든 계산 결과를 동시에 메모리에 할당하고 싶지 않을때에 유용합니다.
+python은 ``list`` 를 반환하는 python2의 많은 함수를 python3에서는 
+``generator`` 를 반환하도록 변경했습니다. 그 이유는 ``generator`` 는 자원(메모리)을
+많이 소모하지 않기 때문입니다.
+아래는 피보나치 수열을 계산할때 ``generator`` 를 활용하는 예제입니다.
+
+.. code:: python
+
+    # generator version
+    def fibon(n):
+        a = b = 1
+        for i in range(n):
+            yield a
+            a, b = b, a + b
+
+이제 우리는 아래와 같이 ``generator`` 를 사용 할 수 있습니다.
+
+.. code:: python
+
+    for x in fibon(1000000):
+        print(x)
+
+이렇게 했을때, 대량의 자원을 사용하는 것에 대하여 걱정하지 않아도 됩니다.
+그러나, 만약 아래와 같이 구현한다면 어떻게 될까요?
+
+
+.. code:: python
+
+    def fibon(n):
+        a = b = 1
+        result = []
+        for i in range(n):
+            result.append(a)
+            a, b = b, a + b
+        return result
+
+이러한 경우, 대량의 입력 값을 계산할때, 모든 자원을 사용해야 했을 것입니다.
+우리는 지금까지 ``generators`` 를 이용하면 즉시 반복작업을 한다고 검토했었는데,
+아직 이부분에 대해  TEST 하지 않았습니다. 테스트 전에 python의 built-in 함수인 ``next()`` 에 대해
+알아야 합니다. 이것은 sequence 형태의 자료에서 다음 element에 접근할수 있도록 합니다.
+자, 이제 이해한 것을 테스트해봅시다.
+
+.. code:: python
+
+    def generator_function():
+        for i in range(3):
+            yield i
+
+    gen = generator_function()
+    print(next(gen))
+    # Output: 0
+    print(next(gen))
+    # Output: 1
+    print(next(gen))
+    # Output: 2
+    print(next(gen))
+    # Output: Traceback (most recent call last):
+    #            File "<stdin>", line 1, in <module>
+    #         StopIteration
+
+위에서 본 것과 같이 모든 값을 yielding 하고 난 후, ``next()`` 함수를 실행하면
+``StopIteration`` Error가 발생합니다. 기본적으로 이 Error는 모든 값이 
+yield 되었다는 것을 알려줍니다. 이쯤되면 왜 ``for`` 문에서는 이 Error를 본적이 없는지
+궁금하게 생각할 수 있습니다. 대답은 간단합니다.  ``for`` 문에서는 자동으로 이 Error를
+catch 하여 ``next`` 함수의 호출을 멈춥니다.
+python 기본 내장 자료형중에서 iteration을 지원하는게 무엇인지 알고 있나요?
+자, 같이 확인해봅시다.
+
+.. code:: python
+
+    my_string = "Yasoob"
+    next(my_string)
+    # Output: Traceback (most recent call last):
+    #      File "<stdin>", line 1, in <module>
+    #    TypeError: str object is not an iterator
+
+음. 이 코드를 보면, 우리가 생각했던 것과 다릅니다. Error는 ``str`` 타입은 iterator가 아니라고 
+알려줍니다. 맞는 말입니다. ``str`` 타입은 iterable 이지, iterator가 아닙니다.
+이 의미는 ``str`` 은 iteration은 지원하지만, 직접적으로 iterate 할 순 없다는 것을
+의미합니다. 그렇다면 ``str`` 타입을 iterate 할 수 있는 방법은 없을까요?
+이것과 관련하여 python 의 built-in 함수( ``iter`` )를 더 알아보겠습니다.
+``iter`` 는 iterable 로부터 ``iterator`` 객체를 return 합니다.
+아래 예제 코드가 있습니다.
+
+.. code:: python
+
+    my_string = "Yasoob"
+    my_iter = iter(my_string)
+    next(my_iter)
+    # Output: 'Y'
+
+지금이 훨씬 좋네요. 여러분은 generator 를 학습한 것에 만족할 것이라 확신합니다.
+여러분은 언제 ``generators`` 를 사용하면 될 것인지에 대한 완벽한 개념을 숙지했다는 점을 꼭 명심하세요.
+여러분은 이제 이러한 pattern 을 적용할 것이며, ``generator`` 를 사용하는 것이 적절하다고 판단될 때마다
+``generator`` 를 활용할 것입니다.
+여러분은 절대 실망하지 않을 겁니다.

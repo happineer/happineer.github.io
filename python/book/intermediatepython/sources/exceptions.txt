@@ -1,0 +1,114 @@
+Exceptions
+----------
+
+예외처리는 여러분이 마스터 한다면 엄청난 power를 갖게 해주는 art 입니다.
+(원문:Exception handling is an art which once you master grants you immense
+powers.)
+여러분에게 Exception을 처리하는 몇 가지 방법을 보여드리겠습니다.
+
+기본적으로 우리는 ``try/except`` 절에 대해 알고 있습니다.
+Exception 이 발생할 수 있는 코드를 ``try`` 블럭에 넣고 예외처리는
+``except`` 절에서 구현합니다. 여기 간단한 예제가 있습니다.
+
+.. code:: python
+
+    try:
+        file = open('test.txt', 'rb')
+    except IOError as e:
+        print('An IOError occurred. {}'.format(e.args[-1]))
+
+위 예제에서 우리는 IOError 예외만 처리하였습니다.
+여기서 대부분의 초심자가 모르는 것은 우리는 여러개의 exception을 
+처리할 수 있다는 것입니다.
+
+Handling multiple exceptions:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+우리는 여러개의 exception을 처리하기 위해 3개의 method를 사용할 수 있습니다.
+첫번째 방법은 발생할 수 있는 모든 exception을 tuple 에 담아서 처리하는 것입니다.
+
+.. code:: python
+
+    try:
+        file = open('test.txt', 'rb')
+    except (IOError, EOFError) as e:
+        print("An error occurred. {}".format(e.args[-1]))
+
+또 다른 방법은 분리된 except 절 에서 각각의 exception을 처리하는 것입니다.
+우리는 원하는 만큼의 exception 블럭을 가질 수 있습니다.
+아래는 그 예제입니다.
+
+.. code:: python
+
+    try:
+        file = open('test.txt', 'rb')
+    except EOFError as e:
+        print("An EOF error occurred.")
+        raise e
+    except IOError as e:
+        print("An error occurred.")
+        raise e
+
+
+이 방법은 첫번째 exception block 에서 exception이 처리되지 못하면,
+exception 은 두번째 block 으로 넘어갑니다. 
+마지막 방법은 모든 Exception을 처리하도록 구현되어 있습니다.
+
+.. code:: python
+
+    try:
+        file = open('test.txt', 'rb')
+    except Exception:
+        # Some logging if you want
+        raise
+
+
+이것은 어떤 exception이 프로그램에 전달될지 모르는 상황에서 꽤 유용할 수 있습니다.
+
+``Finally`` clause
+~~~~~~~~~~~~~~~~~~
+
+우리는 main code를 try 절로 감쌌습니다. 그 이후에 만약 try 절로 감싼 코드에서
+exception이 발생할 때 수행되어질 코드를 except 절로 감쌉니다.
+그러나 이번 예제에서 우리는 3번째 절(``finally`` 절)을 이용할 것입니다.
+finally 절로 감싸여진 코드는 excpetion이 발생하지 않더라도 수행될 것입니다.
+이는 스크립트 이후에 cleaning up 을 위해서 사용되어 집니다.
+여기에 간단한 예제가 있습니다.
+
+.. code:: python
+
+    try:
+        file = open('test.txt', 'rb')
+    except IOError as e:
+        print('An IOError occurred. {}'.format(e.args[-1]))
+    finally:
+        print("This would be printed even if no exception occurs!")
+        
+    # Output: An IOError occurred. No such file or directory
+    # This would be printed even if no exception occurs!
+
+``try/else`` clause
+~~~~~~~~~~~~~~~~~~~
+
+우리는 꽤 자주 **예외가 발생하지 않을때** 특정 코드를 수행하고 싶을 수 있습니다.
+이것은 ``else`` 절을 이용해서 쉽게 구현할 수 있습니다. 대부분 사람들은 이것을 사용하지 않습니다.
+그리고 솔직히 말해서 저 스스로도 이것을 광범위하게 사용하지 않는다.
+여기에 예제가 있다.
+
+.. code:: python
+
+    try:
+        print('I am sure no exception is going to occur!')
+    except Exception:
+        print('exception')
+    else:
+        print('This would only run if no exception occurs.')
+    finally:
+        print('This would be printed in every case.')
+
+    # Output: I am sure no exception is going to occur!
+    # This would only run if no exception occurs.
+    # This would be printed in every case.
+
+이 else 절은 exception이 발생하지 않을때에만 실행됩니다. 그리고
+finally 절 전에 실행됩니다.

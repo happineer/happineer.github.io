@@ -1,0 +1,74 @@
+Coroutines
+----------
+
+Coroutines 은 일부 다르지만 generator 와 매우 비슷합니다.
+주요 차이점은 아래와 같습니다.
+
+-  generator는 data 생산자이다.
+-  coroutines data 소비자이다.
+
+먼저, generator 생성 프로세스를 검토해보겠습니다.
+우리는 generator를 아래와 같이 생성합니다.
+
+.. code:: python
+
+    def fib():
+        a, b = 0, 1
+        while True:
+            yield a
+            a, b = b, a+b
+
+그리고 우리는 ``for`` 문에서 아래와 같이 사용한다.
+
+.. code:: python
+
+    for i in fib():
+        print(i)
+
+이것의 실행속도는 빠르고 메모리에 부하를 주지 않습니다. 이것은
+리스트에 값을 저장하지 않고, 휘발성 값을 **생성** 하기 때문입니다.
+자 만약 우리가 위 예제에서 ``yield`` 를 더 일반적으로 사용한다면,
+우리는 coroutine을 얻을 수 있습니다. coroutine은 coroutine에 전달되는 값을
+소비합니다. 아주 기본이 되는 예제가 python에서 ``grep`` 대안으로 사용하는 아래의 예제입니다.
+
+.. code:: python
+
+    def grep(pattern):
+        print "Searching for %s" % pattern
+        while True:
+            line = (yield)
+            if pattern in line:
+                print(line)
+
+잠깐! ``yield`` 가 무엇을 반환하죠? 우리는 이것을 coroutine으로 사용하고 있습니다.
+이것은 초기에 어떤값도 포함하지 않는 대신에, 외부에서 값을 제공합니다.
+우리는 ``.send()`` method 를 이용하여 값을 전달합니다. 아래 예제를 보겠습니다.
+
+.. code:: python
+
+    search = grep('coroutine')
+    search.next()
+    # Output: Searching for coroutine
+    search.send("I love you")
+    search.send("Don't you love me?")
+    search.send("I love coroutines instead!")
+    # Output: I love coroutines instead!
+
+
+전달된 값은  yield 에 의해 접근됩니다.  ``next()``  를 실행한 이유가 뭘까요?
+coroutine이 시작되었습니다. ``generators`` 와 같이, coroutine은
+함수를 즉시 실행하지 못합니다. 대신에 ``__next__()``  그리고 ``.send()`` 함수의
+응답으로 실행합니다. ``yield`` 표현식으로 이동하여 수행하기 위해
+``next()`` 함수를 실행해야 합니다.
+
+
+우리는 ``.close()`` 함수를 호출함으로써 coroutine을 close 할 수 있습니다.
+
+.. code:: python
+
+    search = grep('coroutine')
+    # ...
+    search.close()
+
+``coroutine`` 에 대한 더 많은 내용은 있습니다. 저는 아래의 멋진 presentation 을 여러분께 제안합니다.
+ <http://www.dabeaz.com/coroutines/Coroutines.pdf> by Divid Beazley.

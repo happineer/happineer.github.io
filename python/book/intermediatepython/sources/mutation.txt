@@ -1,0 +1,105 @@
+Mutation
+--------
+
+python의 변경가능한 또는 변경불가능한 자료형은 python을 처음 접하는
+프로그래를 골치아프게 합니다. 간단히 말해서 mutable 의 의미는
+'변경 가능한' 이라는 의미이고, immutable의 의미는 '상수'의 의미입니다.
+아리송 한가요? 아래 예제를 살펴봅시다.
+
+
+.. code:: python
+
+    foo = ['hi']
+    print(foo)
+    # Output: ['hi']
+
+    bar = foo
+    bar += ['bye']
+    print(foo)
+    # Output: ['hi', 'bye']
+
+무슨 일이 일어난 것일까요? 우리가 예상했던 것과 다릅니다.
+우리는 위 코드의 결과를 아래와 같이 예상했을 것입니다.
+
+.. code:: python
+
+    foo = ['hi']
+    print(foo)
+    # Output: ['hi']
+
+    bar = foo
+    bar += ['bye']
+
+    print(foo)
+    # Output: ['hi']
+
+    print(bar)
+    # Output: ['hi', 'bye']
+
+이것은 bug가 아닙니다. 이것이 mutability 입니다. 어떤 변경가능한 변수를 다른 변수에
+대입할때, 그 data 의 임의의 변경사항은 양쪽 변수 모두에게 적용됩니다.
+새로운 변수는 단지 이전 변수의 alias 일 뿐입니다. 이것은 변경가능한 자료형 변수일 경우에만
+true 입니다. 다음은 함수와 변경가능한 자료형을 포함하는 gotcha 입니다.
+
+.. code:: python
+
+    def add_to(num, target=[]):
+        target.append(num)
+        return target
+
+    add_to(1)
+    # Output: [1]
+
+    add_to(2)
+    # Output: [1, 2]
+
+    add_to(3)
+    # Output: [1, 2, 3]
+
+당신은 아마도 이것이 다르게 동작할것으로 예상했을 것입니다.
+아마도 아래와 같이 ``add_to`` 함수를 호출하는 경우에만 순수 리스트를 생성한다고
+예상 했을것입니다.
+
+.. code:: python
+
+    def add_to(num, target=[]):
+        target.append(num)
+        return target
+
+    add_to(1)
+    # Output: [1]
+
+    add_to(2)
+    # Output: [2]
+
+    add_to(3)
+    # Output: [3]
+
+이것이 골치아프게 만드는 list의  변경성 입니다.
+python에서는 default 인자값은 함수가 정의되자마자 즉시 수행되는 것이지,
+함수가 수행될 때마다 수행되는 것이 아닙니다. 따라서 이러한 동작을 정확히
+알지 못했을 경우에는 절대 변경가능한 자료형으로 default 인자값을 정의하면 안됩니다.
+아래와 같이 해야한다.
+
+.. code:: python
+
+    def add_to(element, target=None):
+        if target is None:
+            target = []
+        target.append(element)
+        return target
+
+``target`` 인자업이 함수를 호출할때마다, 새로운 list는 생성될 것이다.
+예를 들면 아래와 같다.
+
+.. code:: python
+
+    add_to(42)
+    # Output: [42]
+
+    add_to(42)
+    # Output: [42]
+
+    add_to(42)
+    # Output: [42]
+

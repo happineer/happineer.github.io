@@ -1,0 +1,286 @@
+Collections
+-----------
+
+python은 Collection이라고 불리는 많은 container 자료형을 포함하는 모듈과함께
+배포됩니다. 우리는 그중 몇 가지에 대해서 얘기하고, Collection의 유용함에 대해 논의할 것입니다.
+
+아래는 우리가 얘기해볼 Collection 입니다.
+
+-  ``defaultdict``
+-  ``counter``
+-  ``deque``
+-  ``namedtuple``
+
+1.\ ``defaultdict``
+^^^^^^^^^^^^^^^^^^^
+
+저는 개인적으로 defaultdict 를 꽤 사용하는 편입니다. ``dict`` 와 다르게,
+``defaultdict`` 와 함께면 여러분은 사전 자료형이 key를 가지고 있는지 없는지
+확인할 필요가 없습니다. 따라서 우리는 아래와 같이 할 수 있습니다.
+
+.. code:: python
+
+    from collections import defaultdict
+     
+    colours = (
+        ('Yasoob', 'Yellow'),
+        ('Ali', 'Blue'),
+        ('Arham', 'Green'),
+        ('Ali', 'Black'),
+        ('Yasoob', 'Red'),
+        ('Ahmed', 'Silver'),
+    )
+     
+    favourite_colours = defaultdict(list)
+     
+    for name, colour in colours:
+        favourite_colours[name].append(colour)
+     
+    print(favourite_colours)
+     
+    # output 
+    # defaultdict(<type 'list'>, 
+    #    {'Arham': ['Green'], 
+    #     'Yasoob': ['Yellow', 'Red'], 
+    #     'Ahmed': ['Silver'], 
+    #     'Ali': ['Blue', 'Black']
+    # })
+
+또 하나의 중요한 사용 사례는 사전자료형 내부에 nested list에 값을 추가할 때입니다.
+( 원문 : One another very important use case is when you are appending to nested
+lists inside a dictionary. )
+만약 ``key`` 가 이미 존재하지 않았다면, ``KeyError`` 가 발생합니다.
+``defaultdict`` 는 여러분이 이러한 이슈를 영리하게 회피하도록 해줍니다.
+첫번째로 ``KeyError`` 를 유발하는 ``dict`` 를 사용하는 예제를 공유합니다.
+그리고 ``defaultdict`` 를 사용하는 해결책을 공유합니다.
+
+**Problem:**
+
+.. code:: python
+
+    some_dict = {}
+    some_dict['colours']['favourite'] = "yellow"
+    # Raises KeyError: 'colours'
+
+**Solution:**
+
+.. code:: python
+
+    import collections
+    tree = lambda: collections.defaultdict(tree)
+    some_dict = tree()
+    some_dict['colours']['favourite'] = "yellow"
+    # Works fine
+
+``some_dict`` 를 ``json.dumps`` 를 이용해서 출력할 수 있습니다.
+여기 sample code 가 있습니다.
+
+.. code:: python
+
+    import json
+    print(json.dumps(some_dict))
+    # Output: {"colours": {"favourite": "yellow"}}
+
+2.\ ``counter``
+^^^^^^^^^^^^^^^
+우리는 Counter를 이용하여 특정 item의 발생횟수를 셀 수 있습니다.
+예를 들어, 각각의 좋아하는 색상의 숫자를 세는데 사용될 수 있습니다.
+
+.. code:: python
+
+    from collections import Counter
+     
+    colours = (
+        ('Yasoob', 'Yellow'),
+        ('Ali', 'Blue'),
+        ('Arham', 'Green'),
+        ('Ali', 'Black'),
+        ('Yasoob', 'Red'),
+        ('Ahmed', 'Silver'),
+    )
+     
+    favs = Counter(name for name, colour in colours)
+    print(favs)
+    # Output: Counter({
+    #    'Yasoob': 2, 
+    #    'Ali': 2, 
+    #    'Arham': 1, 
+    #    'Ahmed': 1
+    # })
+
+또한 우리는 file에서 대부분의 공통 line 을 셀 수 있습니다.
+예를 들면 아래와 같습니다.
+
+.. code:: python
+
+    with open('filename', 'rb') as f:
+        line_count = Counter(f)
+    print(line_count)
+
+
+3.\ ``deque``
+^^^^^^^^^^^^^
+
+``deque`` 는 여러분에게 큐의 앞뒤로 요소를 append/delete 가능한 
+양방향를 제공합니다. 우선, 여러분은 collection lib 로부터 deque 모듈을 import 해야합니다.
+
+.. code:: python
+
+    from collections import deque
+
+자 이제 우리는 deque 객체를 초기화 할 수 있습니다.
+
+.. code:: python
+
+    d = deque()
+
+It works like python lists and provides you with somewhat similar
+methods as well. For example you can do:
+
+이는 python list 처럼 동작하고, 다소 비슷한 method 도 함께 제공합니다.
+여러분이 할 수 있는 예제가 있습니다.
+
+.. code:: python
+
+    d = deque()
+    d.append('1')
+    d.append('2')
+    d.append('3')
+
+    print(len(d))
+    # Output: 3
+
+    print(d[0])
+    # Output: '1'
+
+    print(d[-1])
+    # Output: '3'
+
+여러분은 deque 의 양쪽 사이드로부터 값을 가져올 수 있습니다.
+
+
+.. code:: python
+
+    d = deque(range(5))
+    print(len(d))
+    # Output: 5
+
+    d.popleft()
+    # Output: 0
+
+    d.pop()
+    # Output: 4
+
+    print(d)
+    # Output: deque([1, 2, 3])
+
+우리는 또한 deque 가 포함할 수 있는 item 의 갯수를 제한할 수 있습니다.
+이렇게 함으로써 우리가 deque 의 최대 상한에서 값을 입력할 때, 
+deque 의 반대쪽에서 item 이 pop out 될 것입니다.
+다음 예제를 통해 설명하는 것이 좋을 것 입니다.
+
+.. code:: python
+
+    d = deque(maxlen=30)
+
+여러분이 deque에 30개 item이 꽉 차 있는 상태에서 새로운 값을 입력할때마다,
+가장 왼쪽에 있는 값은 list에서 pop 될 것입니다.
+여러분은 새로운 값과 함께 list를 원하는 방향으로 확장할 수 있습니다.
+
+.. code:: python
+
+    d = deque([1,2,3,4,5])
+    d.extendleft([0])
+    d.extend([6,7,8])
+    print(d)
+    # Output: deque([0, 1, 2, 3, 4, 5, 6, 7, 8])
+
+이것은 ``collections`` 모듈을 통해 빠르게 처리되었습니다.
+여러분은 이 책을 읽은 후 공식 문서를 읽을 것이라 확신합니다.
+
+
+4.\ ``namedtuple``
+^^^^^^^^^^^^^^^^^^
+
+이미 여러분은 tuples 에 대해서 알고 있을 것입니다. tuple은 연속된 불변의 파이썬 객체를
+저장할 수 있는 가벼운 객체타입입니다. 튜플은 list와 비슷하지만, 몇가지 다른점이 있습니다. 
+list와 다른 가장 큰 특징은 **튜플의 값은 바꿀 수 없다**  라는 것입니다. 
+튜플의 값에 접근하기 위해서는 아래와 같이 정수의 index 를 사용하면 된다.
+
+
+.. code:: python
+
+    man = ('Ali', 30)
+    print(man[0])
+    # Output: Ali
+
+
+자 그럼.. ``namedtyples`` 란 무엇일까요? 이것은 간단한 작업을 위해 
+tuples 을 더 편리한 container로 변경한 것이다. ``namedtuple`` 과 함께라면
+tuple의 멤버에 접근하기 위해서 더이상 정수 index를 사용하지 않아도 된다.
+``namedtuple`` 을 dict 타입처럼 생각할 수 있습니다. 하지만 ``namedtuple`` 역시
+불변 객체라는 점이 dict와 다른점이다.
+
+.. code:: python
+
+    from collections import namedtuple
+
+    Animal = namedtuple('Animal', 'name age type')
+    perry = Animal(name="perry", age=31, type="cat")
+
+    print(perry)
+    # Output: Animal(name='perry', age=31, type='cat')
+
+    print(perry.name)
+    # Output: 'perry'
+
+위에서 봤듯이, 우리는 tuple의 member에 접근하는데 ``.`` 을 사용하였습니다.
+자 이제 ``namedtuple`` 에 대해 좀 더 파헤쳐보겠습니다. ``namedtuple`` 은
+2가지 필수 인자를 가집니다. 그 두가지는 tuple name 과 tuple의 field\_names 입니다.
+위 예제에서 tuple name 은 'Animal' 이고 tuple 의 field\_names 는 'name'
+'age', 그리고 'type' 입니다. ``namedtuple`` 은 tuple 을 **seld-document** 로
+만들어 줍니다. 여러분은 코드를 빠르게 훑어볼 때 무슨 작업이 진행되는 쉽게 이해할 수 있습니다.
+그리고 tuple 의 member에 접근할때 더 이상 index를 사용하지 않아도 되기때문에
+코드의 유지보수가 더욱 쉬워졌습니다. 게다가 **``namedtuple`` 객체는
+per-instance dictionaries를 가지지 않기** 때문에, 매우 가볍고 일반적인
+tuple에 비해서 추가의 메모리 공간을 필요로 하지 않습니다. 이것이 ``namedtuple`` 을
+dictionary보다 빠르게 만들어줍니다. 그러나 **namedtuple의 속성은 불변이다** 라는
+tuple 의 특징을 잊지 않아야 합니다. 이것은 아래의 작업을 할 수 없다는 것을 의미합니다.
+
+.. code:: python
+
+    from collections import namedtuple
+
+    Animal = namedtuple('Animal', 'name age type')
+    perry = Animal(name="perry", age=31, type="cat")
+    perry.age = 42
+
+    # Output: Traceback (most recent call last):
+    #            File "", line 1, in 
+    #         AttributeError: can't set attribute
+
+여러분은 ``namedtuple`` 을 self-documenting 하는데 사용해야만 합니다.
+**그것들은 일반 tuple 과 하위호환성을 가진다.** 이것은 
+namedtuple 또한 정수 index를 가진다는 것을 의미한다.
+
+.. code:: python
+
+    from collections import namedtuple
+
+    Animal = namedtuple('Animal', 'name age type')
+    perry = Animal(name="perry", age=31, type="cat")
+    print(perry[0])
+    # Output: perry
+
+
+마지막으로 여러분은 아래와 같이 namedtuple 을 사전형으로 형변환 할수 있습니다.
+
+.. code:: python
+
+    from collections import namedtuple
+
+    Animal = namedtuple('Animal', 'name age type')
+    perry = Animal(name="perry", age=31, type="cat")
+    print(perry._asdict())
+    # Output: OrderedDict([('name', 'perry'), ('age', 31), ...
+

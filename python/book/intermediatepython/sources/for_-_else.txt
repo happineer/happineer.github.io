@@ -1,0 +1,82 @@
+For - Else
+----------
+
+loop는 모든 프로그래밍 언어에서 중요한 부분입니다. 당연히 ``for`` 문은
+python에서 중요한 부분입니다. 그러나 대부분의 초심자는 잘 모르는 몇가지가 있습니다.
+우리는 그 몇가지에 대해서 하나하나씩 알아볼 예정입니다.
+
+
+우리가 알고 있는 것에 대해서 먼저 시작해보겠습니다.
+우리는 for 문을 아래와 같이 사용할 수 있다고 알고 있습니다.
+
+.. code:: python
+
+    fruits = ['apple', 'banana', 'mango']
+    for fruit in fruits:
+        print fruit.capitalize()
+
+    # Output: Apple
+    #         Banana
+    #         Mango
+
+
+이것은 for 문의 아주 기본적인 구조이다. 이제 덜 알려져 있는
+python 의 for 문 기능 몇가지를 알아보자.
+
+1.\ ``else`` clause:
+^^^^^^^^^^^^^^^^^^^^
+
+for 문 또한 ``else`` 문을 가지고 있고, 우리 대부분은 이것에 익숙하지 않습니다.
+``else`` 구문은 loop가 정상적으로 수행되었을때 수행됩니다.
+이것은 loop가 ``break`` 문을 만나지 않고 종료되었음을 의미한다.
+어떤 상황에 이것을 사용해야 하는지 이해하면 ``else`` 문은 굉장히 유용합니다.
+저 스스로는 한참 후에야 알게 되었습니다.
+
+
+보통 loop를 수행하면서 item 을 찾는것이 일반적입니다.
+만약 item 을 찾았다면 우리는 ``break`` 문을 이용하여 loop를 빠져나갑니다.
+loop가 종료되는 2가지 시나리오가 있습니다.
+첫번째는 item 을 찾은 후, ``break`` 문을 만나는 경우이다.
+두번째는 loop 가 끝까지 수행된 후 종료되는 경우이다. 
+우리는 loop가 어떤 이유로 종료되었는지 알고 싶을 것이다.
+한가지 방법은 flag 를 set하여 loop가 끝났을 때 flag를 확인하는 방법이다.
+다른 방법은 ``else`` 문을 이용하는 것이다.
+
+이것은 ``for/else`` loop의 기본적인 구조이다.
+
+.. code:: python
+
+    for item in container:
+        if search_something(item):
+            # Found it!
+            process(item)
+            break
+    else:
+        # Didn't find anything..
+        not_found_in_container()
+
+
+공식 문서에서 가져온 이 간단한 예제를 살펴보자.
+
+.. code:: python
+
+    for n in range(2, 10):
+        for x in range(2, n):
+            if n % x == 0:
+                print n, 'equals', x, '*', n/x
+                break
+
+이것은 2와 10 사이의 소수를 출력한다. 이제 재미있는 부분을 보자.
+우리는 소수인 숫자를 인식하고 알려주는 ``else`` 블럭을 아래와 같이 추가 할 수 있다.
+
+.. code:: python
+
+    for n in range(2, 10):
+        for x in range(2, n):
+            if n % x == 0:
+                print n, 'equals', x, '*', n/x
+                break
+        else:
+            # loop fell through without finding a factor
+            print n, 'is a prime number'
+

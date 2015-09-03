@@ -1,0 +1,89 @@
+One Liners
+----------
+
+이번 챕터에서는 liner python 명령어를 보여드리겠습니다. 때때로 아주 유용합니다.
+
+**Simple Webserver**
+
+network 를 통해 파일을 빠르게 공유하고 싶었던 적이 있습니까?
+그렇다면 여러분은 운이 좋네요. python 은 여러분을 위해 비슷한 기능을
+제공합니다. network 를 통해 서비스 하고자하는 directory 로 가서
+아래의 코드를 터미널에서 입력해보세요.
+
+.. code:: python
+
+    # Python 2
+    python -m SimpleHTTPServer
+
+    # Python 3
+    python -m http.server
+
+**Pretty printing**
+
+여러분은 리스트 자료형과 사전 자료형을 아름다운 python 형식으로 출력할 수 있습니다.
+여기 관련된 코드가 있습니다.
+
+.. code:: python
+
+    from pprint import pprint
+
+    my_dict = {'name': 'Yasoob', 'age': 'undefined', 'personality': 'awesome'}
+    pprint(my_dict)
+
+이것은 사전 자료형에서 훨씬 효과적입니다. 게다가 만약 여러분이 file로부터 
+json 타입을 이쁘게 출력하고 싶다면, 여러분은 간단하게 아래와 같이 할 수 있습니다.
+
+.. code:: python
+
+    cat file.json | python -m json.tool
+
+**Profiling a script**
+
+이것은 여러분의 스크립트가 완전히 bottlenecks 상태일때 굉장히 유용합니다.
+
+.. code:: python
+
+    python -m cProfile my_script.py
+
+Note: ``cProfile`` c로 구현되어서  ``profile`` 보다 더 빠르게 수행됩니다.
+
+**CSV to json**
+
+이것을 terminal 에서 실행해보세요.
+
+.. code:: python
+
+    python -c "import csv,json;print json.dumps(list(csv.reader(open('csv_file.csv'))))"
+
+여러분은 ``csv_file.csv`` 부분은 여러분이 설정한 파일이름으로 변경해야 함을 명심하세요.
+
+**List Flattening**
+
+여러분은 ``itertools`` package 의 ``itertools.chain.from_iterable`` 을 사용함으로써
+빠르고 쉽게 list를 1차원으로 만들 수 있습니다.
+아래는 간단한 예제입니다.
+
+.. code:: python
+
+    a_list = [[1, 2], [3, 4], [5, 6]]
+    print(list(itertools.chain.from_iterable(a_list)))
+    # Output: [1, 2, 3, 4, 5, 6]
+    
+    # or 
+    print(list(itertools.chain(*a_list)))
+    # Output: [1, 2, 3, 4, 5, 6]
+
+
+**One Line Constructors**
+
+클래스 초기화할때 불필요한 할당문은 피하세요.
+
+.. code:: python
+
+    class A(object):
+        def __init__(self, a, b, c, d, e, f):
+            self.__dict__.update({k: v for k, v in locals().items() if k != 'self'})
+
+
+one liner 에 대한 더 많은 내용은 아래 링크에서 찾을 수 있습니다.
+`Python website <https://wiki.python.org/moin/Powerful%20Python%20One-Liners>`__.

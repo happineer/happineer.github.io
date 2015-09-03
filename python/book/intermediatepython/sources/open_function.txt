@@ -1,0 +1,113 @@
+Open function
+-------------
+
+`open <http://docs.python.org/dev/library/functions.html#open>`__ 함수는 file을
+open 합니다. 꽤 간단합니다 그죠? 대부분 우리는 아래와 같이 사용한다고 알고 있습니다.
+
+.. code:: python
+
+    f = open('photo.jpg', 'r+')
+    jpgdata = f.read()
+    f.close()
+
+제가 이번 article 을 작성하게 된 이유는 대부분 open 함수가 이렇게
+사용되는 것을 봤기 때문입니다. 위 코드에는 **3가지** error가 있습니다.
+여러분은 3가지 모두 찾을 수 있습니까? 만약 그렇지 않다면 계속 읽어주세요.
+이 article 의 마지막에서 위 코드의 잘못된 점을 알게될 것입니다.
+그리고 더 중요한것은 여러분의 코드에서 이러한 실수를 하지 않게 될 것이라는 점입니다.
+기본적인 것부터 시작해 봅시다.
+
+open 함수는 os 로부터 python app 에게 주어진 file handle 을 return 합니다.
+여러분은 file에 대한 작업이 일단 끝나면 file handle을 return 할 것입니다.
+만약 여러분의 app 이 file handle 의 상한에 접근하지 않는다면 
+file handle을 가질 수 있습니다.
+
+명시적으로 ``close`` 를 호출하여 file handle 을 close 합니다. 
+그러나 read 가 성공적일 때에 한해서 그렇습니다.
+만약 ``f=open(...)`` 이후에 에러가 발생한다면, ``f.close()`` 는 호출될 수
+없을 것입니다.( python interpreter 에 의존하여, file handle 은 return 이
+될 것이다. 그러나 그건 별개의 얘기다). exception 이 발생하든 안하든
+file이 closed 되도록 확신하기 위해서는 코드를 ``with`` 구문 안에 위치시켜야 합니다.
+
+
+.. code:: python
+
+    with open('photo.jpg', 'r+') as f:
+        jpgdata = f.read()
+
+``open`` 의 첫번째 인자는 파일 이름입니다.
+2번째 인자(*mode*)는 파일을 *어떻게* open 할 것 인지를 결정합니다.
+
+-  파일을 읽기만 한다면 ``r``
+-  파일을 읽고, 쓰고싶다면 ``r+``
+-  파일을 덮어쓰고 싶다면 ``w``
+-  파일에 덧붙이고 싶다면 ``a``
+
+이외에도 몇 가지 더 유효한 mode string 이 있지만, 여러분이 그것을 사용할 기회는
+거의 없습니다. mode 는 중요합니다. 왜냐면 mode에 따라 file 을 다루는 동작이
+바뀔 뿐만 아니라 mode에 따라 file permission error 가 발생할 수도 있기 때문입니다.
+예를 들면, 만약 우리가 쓰기금지된 폴더에서 jpg-file 을 open ``open(.., 'r+')`` 한다면
+결과는 fail 입니다. mode 는 추가의 character를 포함할 수 있습니다.
+우리는 binary file을 open 할 수 있습니다(여러분은 bytes 문자열을 보게될 것입니다)
+또는 text mode 로도 open 할 수 있습니다(character string 형태로 보게 됩니다)
+
+
+일반적으로 사람에 의해 쓰여진 포맷이라면, 해당 파일은 text mode 일 것입니다.
+``jpg`` 이미지 파일은 보통 사람에 의해 작성된 파일이 아닙니다
+(그리고 정말로 사람은 읽을 수 없습니다.) 그래서 여러분은 jpg 파일은
+``b`` 를 text string 에 붙여서 binary mode 로 open 해야 합니다.
+(만약 여러분이 opening 예제를 따라했다면, 제대로 된 입력은 ``rb`` 가 될 것입니다)
+만약 여러분이 text mode 로 open 했다면(ex. ``t`` 를 붙이거나
+``r/r+/w/a`` 를 제외하면 아무것도 없거나) 여러분은 또한 컴퓨터가 어떤 encoding을
+사용했는지 반드시 알아야 합니다. 모든 파일은 just bytes 입니다. 문자열이 아닙니다.
+
+
+운이 나쁘게도 python2 에서 ``open`` 은 명시적인 encoding 을 지정할 수 없습니다.
+하지만 `io.open <http://docs.python.org/2/library/io.html#io.open>`__  함수는
+python2,3 에서 모두 사용가능하고(``open`` 의 alias 일 경우에),
+올바른 방법입니다. 여러분은 ``encoding`` 키워드와 함께 encoding 을
+전달할 수 있습니다. 만약 아무 encoding 도 전달하지 않았다면,
+system (그리고 python) 의 default encoding 이 선택되어질 것입니다.
+여러분은 아마도 이러한 default encoding 에 의존하고 싶을지도 모릅니다.
+하지만 default 값은 꽤 잘못된 경우가 많고 또한 default encoding 은
+사실 모든 문자열을 표현하지 못합니다.(이러한 현상은 python2.x 또는
+windows에서 발생합니다). 그래서 진행할 때 encoding 을 지정합시다.
+``utf-8`` 이 최고입니다. 여러분이 파일을 write 할때, 여러분은
+여러분의 기호에 따라 encoding을 지정할 수 있습니다.( 또는 프로그램이
+선호하는 encoding, 이것은 결국 file을 읽을 수 있는 encoding ).
+
+
+여러분은 여러분이 read 한 file 이 어떤 encoding 인지 어떻게 알 수 있을까요?
+음.. 운이 나쁘게도 encoding 을 알아낼 수 있는 방법은 없습니다. - bytes 는 같지만,
+다르게 표현될 수 있습니다. 그러나 다른 encoding 환경에서 문자열은 완전히
+같습니다.(원문: there is no foolproof way to detect the encoding - the
+same bytes can represent different, but equally valid characters in
+different encodings) 그래서 여러분은 encoding 값을 알기 위해서는 metadata 에 의존해야 합니다.
+(예를 들면 HTTP 헤더). 점점 더 format은 encoding 을 UTF-8 으로 지정하는 추세입니다.
+
+
+Armed with this knowledge, let's write a program that reads a file,
+determines whether it's JPG (hint: These files start with the bytes
+``FF D8``), and writes a text file that describe the input file.
+
+이러한 지식으로 무장한채로, file 을 읽는 프로그램을 작성해봅시다.
+JPG 라고 가정합니다.(힌트: 이 형식의 파일은 ``FF D8`` 으로 시작합니다)
+그리고 input file 을 설명하는 text file을 작성합니다.
+
+.. code:: python
+
+    import io
+
+    with open('photo.jpg', 'rb') as inf:
+        jpgdata = inf.read()
+
+    if jpgdata.startswith(b'\xff\xd8'):
+        text = u'This is a jpeg file (%d bytes long)\n'
+    else:
+        text = u'This is a random file (%d bytes long)\n'
+
+    with io.open('summary.txt', 'w', encoding='utf-8') as outf:
+        outf.write(text % len(jpgdata))
+
+저는 이제 여러분이 ``open`` 함수를 제대로 사용할 수 있다고 확신합니다!
+

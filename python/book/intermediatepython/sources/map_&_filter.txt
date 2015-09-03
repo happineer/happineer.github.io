@@ -1,0 +1,86 @@
+Map & Filter
+------------
+
+기능상의 접근방법/구현방법을 향상시키는 2개의 함수가 있습니다.
+우리는 각각에 대해서 논의를 해보고, 어떻게 활용할 수 있는지 이해해보겠습니다.
+
+1. Map
+^^^^^^
+
+``Map`` 함수는 input\_list의 모든 item 에 대해서 함수를 적용합니다.
+아래의 예제를 보겠습니다.
+
+**Blueprint**
+
+.. code:: python
+
+    map(function_to_apply, list_of_inputs)
+
+Most of the times we want to pass all the list elements to a function
+one-by-one and then collect the output. For instance:
+
+대부분의 경우, 우리는 list 의 모든 요소를 함수에 하나씩 전달하고,
+결과를 조립하여 완성합니다.. 예를 들면 아래와 같습니다.
+
+.. code:: python
+
+    items = [1, 2, 3, 4, 5]
+    squared = []
+    for i in items:
+        squared.append(i**2)
+
+``Map`` 은 우리가 좀 더 쉽고 훌륭한 방법으로 구현할 수 있도록 해줍니다.
+위 코드를 map 을 사용하면 아래와 같이 변경할 수 있습니다.
+
+.. code:: python
+
+    items = [1, 2, 3, 4, 5]
+    squared = map(lambda x: x**2, items)
+
+Most of the times we use lambdas with ``map`` so I did the same. Instead
+of a list of inputs we can even have a list of functions!
+
+대부분의 많은 경우, ``map`` 과 lambda 함수를 함께 사용하여 위 코드처럼
+동일하게 기능 구현을 할 수 있습니다. 심지어 입력으로 리스트를 사용하지 않고, 심지어
+입력으로 함수 리스트를 사용할 수도 있습니다. 아래 코드를 보겠습니다.
+
+.. code:: python
+
+    def multiply(x):
+            return (x*x)
+    def add(x):
+            return (x+x)
+
+    funcs = [multiply, add]
+    for i in range(5):
+        value = map(lambda x: x(i), funcs)
+        print(value)
+        
+    # Output:
+    # [0, 0]
+    # [1, 2]
+    # [4, 4]
+    # [9, 6]
+    # [16, 8]
+
+2. Filter
+^^^^^^^^^
+
+As the name suggests, filter creates a list of elements for which a
+function returns true. Here is a short and concise example:
+
+이름에서 알 수 있듯이, filter는 함수에서 true를 return하는 리스트의 원소들로
+리스트를 재 구성합니다.. 아래에 짧고 간결한 예제를 보겠습니다.
+
+.. code:: python
+
+    number_list = range(-5, 5)
+    less_than_zero = list(filter(lambda x: x < 0, number_list))
+    print(less_than_zero)
+
+    # Output: [-5, -4, -3, -2, -1]
+
+filter는 for loop와 흡사하지만, filter는 builtin 함수를 사용하기 때문에 훨씬 빠릅니다.
+
+**Note:** 만약, map 과 filter를 이용한 코드가 깔끔하게 보이지 않는다면,
+``list/dict/tuple`` comprehensions 를 읽어보세요.

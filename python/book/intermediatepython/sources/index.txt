@@ -1,0 +1,61 @@
+:orphan:
+
+**Note:** 여러분이 저에게 조언을 주고자 한다면, 저의 `mailing list <http://eepurl.com/bwjcej>`__ 에 가입 하세요. 제가 tip을 받을 수 있는 시스템을 메일로 보내드릴게요.
+
+Intermediate Python
+===================
+
+============
+서론
+============
+
+
+Python 은 프로그래머에게 친근하면도 강력한, 아주 놀라운 언어입니다. 그러나 Python의 기본지식을 익힌 후, 더 배워보고 싶은 갈등을 해소하기에는 문서가 부족합니다.
+
+이 책을 통해, 이러한 문제를 해결하고자 합니다. 저는 여러분이 python에 대해 좀 더 알아보고 싶은 흥미로운 주제들에 대해 약간의 정보를 드리려 합니다.
+
+이 책에서 다루는 주제들은 python 의 훌륭한 부분을 향한 어려분의 마음을 열어줄 것입니다. 이 책은 제가 python을 배우기 시작했을때처럼 무엇인가를 배워보고싶다는 저의 바램의 결과물입니다.
+
+만약 여러분이 초심자, 중급자 또는 심지어 고급 프로그래머이더라도, 여러분이 배워볼만한 것들이 이 책에 있을 것입니다.
+
+다시 한번 강조드리지만, 이 책은 tutorial 이 아닙니다. 그리고 python을 가르쳐주지도 않습니다. 주제들에 대해서 깊게 설명하지 않습니다. 대신 최소의 필요한 정보만이 주어질 것입니다.
+
+제가 그랬던 것처럼 여러분은 흥분될 것이라 확신합니다. 자 이제 시작해보겠습니다.
+
+Note: 이 책은 현재 작업 진행중입니다. 만약 여러분이 더 좋은 개선책을 알게되면, (여러분이 많은 stuff 을 알고 있다는걸 전 알고 있습니다) pull request 보내주시기 바랍니다.
+
+============
+저자
+============
+
+
+저는 Muhammad Yassob Ullah Khalid 입니다. 저는 3년 넘게 python으로 다양하게 프로그래밍을 해왔습니다. 저는 다양한 open source project 를 참가하였습니다. 저는 보통 저의 블로그 `blog <http://www.freepythontips.wordpress.com>`_ 에 흥미로운 python 주제에 대하여 blog 를 운영했습니다. 2014년에 저는 또한 베를린에서 개최된 EuroPython 에서 발표를 하기도 했습니다. 이 행사는 유럽에서 가장 큰 python conference 입니다.
+
+.. toctree::
+   :maxdepth: 2
+
+   args_and_kwargs
+   debugging
+   generators
+   map_&_filter
+   set_-_data_structure
+   ternary_operators
+   decorators
+   global_&_return
+   mutation
+   __slots__magic
+   virtual_environment
+   collections
+   enumerate
+   object_introspection
+   comprehensions
+   exceptions
+   lambdas
+   one_liners
+   for_-_else
+   open_function
+   targeting_python_2_3
+   coroutines
+   function_caching
+   context_managers
+

@@ -1,0 +1,58 @@
+디버깅
+---------
+
+디버깅은 일단 확실하게 방법을 익혀두면, bug를 수정하는 역량을 강화된다.
+대부분의 python 초심자들은 python debugger (``pdb``)의 중요성에 관심이 없다.
+이번 장에서는 몇가지 중요한 명령어를 알려주려고 한다.
+더 많은 정보를 얻기 위해서는 공식 document를 보길 바란다.
+
+**command line에서 실행하기**
+
+command line에서 python debugger와 함께 python script를 실행할 수 있다.
+아래 예제를 보자.
+
+.. code:: python
+
+    $ python -m pdb my_script.py
+
+python debugger는 script의 첫 구문에서 실행을 잠시 멈춘다.
+이 방법은 script가 짧을 때 유용하다. 이후에는 변수를 확인하는 작업이나,
+line-by-line으로 script 를 실행해 볼 수 있다.
+
+**script 내부에서 디버거 실행해보기**
+
+You can set break points in the script itself so that you can inspect
+the variables and stuff at particular points. This is possible using the
+``pdb.set_trace()`` method. Here is an example:
+
+script의 특정위치에서 변수 또는 stuff 를 검사하기 위해서 원하는 지점에
+break point를 설정할 수 있다. break point 위치에 ``pdb.set_trace()`` 함수를
+실행하면 된다. 아래의 예제를 살펴보자.
+
+.. code:: python
+
+    import pdb
+
+    def make_bread():
+        pdb.set_trace()
+        return "I don't have time"
+
+    print(make_bread())
+
+위 script를 저장한 후 실행해보자. 실행하자마자 debugger모드로
+진입됨을 알 수 있다. 이제 몇가지 추가의 debugger 명령어를 살펴보자.
+
+**명령어:**
+
+-  ``c``: 계속 실행
+-  ``w``: 현재 실행되고 있는 line의 context를 보여준다.
+-  ``a``: 현재 함수의 argument list를 print합니다.
+-  ``s``: 현재 line을 실행하고 첫번째 가능한 occasion에서 멈춘다.
+-  ``n``: 현재 함수내의 다음line 에 도달할때까지 또는 return 할때까지 실행된다.
+
+``n``\ ext 과 ``s``\ tep 의 차이점은 호출된 함수의 내부에서 step 이 멈추는지
+다음에 호출한 함수가 최고속도로 실행된 후, 현재 함수의 다음 line에서 멈추는지 차이이다.
+
+지금까지는 ``pdb`` 의 일부 명령어만 살펴보았다. ``pdb`` 는 역시 사후 지원을 합니다.
+그리고 이것은 정말 편리한 기능입니다. ``pdb`` 공식문서를 보고,
+더 많은 다양한 명령어에 대해서 살펴볼 것을 강력히 제안합니다.
